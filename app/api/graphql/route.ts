@@ -26,13 +26,75 @@ interface Profile {
 }
 
 const typeDefs = /* GraphQL */ `
-  type Project {
-    id: ID!
+  type SkillItem {
+    icon: String!
+    name: String!
+  }
+
+  type SkillGroup {
     title: String!
+    items: [SkillItem!]!
+  }
+
+  type SkillCategory {
+    id: ID!
+    label: String!
+    groups: [SkillGroup!]!
+  }
+
+  type Project {
+    title: String!
+    image: String!
+    alt: String!
     description: String
+    collaborators: String
     tags: [String!]!
-    url: String
-    thumb: String
+    github: String
+    githubLabel: String
+    details: String
+    period: String
+  }
+
+  type Achievement {
+    icon: String!
+    title: String!
+    description: String!
+  }
+
+  type Certificate {
+    tags: [String!]!
+    title: String!
+    desc: String!
+    link: String
+    skills: [String!]!
+  }
+
+  type Course {
+    title: String!
+    code: String!
+    institution: String!
+  }
+
+  type Testimonial {
+    quote: String!
+    author: String!
+    role: String!
+  }
+
+  type WorkExperience {
+    company: String!
+    project: String!
+    period: String!
+    tech: [String!]!
+    summary: String!
+    highlights: [String!]!
+  }
+
+  type BlogPost {
+    title: String!
+    date: String!
+    description: String!
+    url: String!
   }
 
   type Profile {
@@ -43,8 +105,13 @@ const typeDefs = /* GraphQL */ `
 
   type Query {
     projects: [Project!]!
-    project(id: ID!): Project
-    skills: [String!]!
+    skills: [SkillCategory!]!
+    achievements: [Achievement!]!
+    certificates: [Certificate!]!
+    courses: [Course!]!
+    testimonials: [Testimonial!]!
+    workExperiences: [WorkExperience!]!
+    blogPosts: [BlogPost!]!
     profile: Profile!
   }
 `;
@@ -57,7 +124,12 @@ const resolvers = {
       return projects.find((p) => p.id === id) ?? null;
     },
     skills: async () => (await loadJson<{ skills: string[] }>("skills.json")).skills,
-    profile: async () => (await loadJson<{ profile: Profile }>("profile.json")).profile,
+    profile: async () => (await loadJson<{ profile: Profile }>("profile.json")).profile,    achievements: async () => await loadJson("achievements.json"),
+    certificates: async () => await loadJson("certificates.json"),
+    courses: async () => await loadJson("courses.json"),
+    testimonials: async () => await loadJson("testimonials.json"),
+    workExperiences: async () => await loadJson("work-experiences.json"),
+    blogPosts: async () => await loadJson("blog-posts.json"),
   },
 };
 
