@@ -3,57 +3,13 @@
 /* Tailwind v4 dark variant mapping (use `dark:` utilities with .dark on <html> or <body>) */
 @custom-variant dark (&:is(.dark *));
 
-/* Map CSS variables to Tailwind theme tokens (v4) */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
+/* ===== Design Tokens (Light / Dark) ===== */
+:root {
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
   --font-mono: ui-monospace, SFMono-Regular, "Courier New", monospace;
 
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-destructive: var(--destructive);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
-
-/* ===== Design Tokens (Light / Dark) ===== */
-:root {
   --background: 248 250 252; /* #f8fafc */
   --foreground: 15 23 41; /* #0f172a */
   --card: 255 255 255; /* #ffffff */
@@ -163,11 +119,13 @@
   }
 
   * {
-    @apply border-border;
+    --tw-border-opacity: 1;
+    border-color: rgb(var(--border) / var(--tw-border-opacity));
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
     accent-color: rgb(var(--primary));
   }
 
@@ -191,10 +149,13 @@
 
   /* Accessible default focus ring */
   *:focus-visible {
-    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(var(--background)),
+      0 0 0 4px rgb(var(--ring));
   }
   *:focus:not(:focus-visible) {
-    @apply ring-0 outline-none;
+    box-shadow: none;
+    outline: none;
   }
 
   /* Respect users who prefer less motion */
