@@ -6,7 +6,7 @@ export default function HomePage() {
       <Profile />
 
 
-      <h1 className="text-3xl font-bold tracking-tight mb-6">My Work</h1>
+      <h1 className="text-3xl font-bold tracking-tight mb-6 text-teal-700 dark:text-teal-400">My Work</h1>
     </main>
   );
 }

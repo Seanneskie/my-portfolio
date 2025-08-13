@@ -18,12 +18,12 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
     <Card className="overflow-hidden relative">
       <CardHeader className="p-0">
         <div className="relative">
-          <div className="h-14 w-full bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 dark:from-blue-500/15 dark:via-purple-500/15 dark:to-pink-500/15 animate-gradient-x" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-pink-500/40 dark:from-blue-500/40 dark:via-purple-500/40 dark:to-pink-500/40" />
+          <div className="h-14 w-full bg-gradient-to-r from-teal-600/20 via-teal-500/15 to-transparent dark:from-teal-400/20 dark:via-teal-400/10 dark:to-transparent animate-gradient-x" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
           <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(60%_80%_at_20%_0%,black_10%,transparent_60%)]" />
           <div className="absolute inset-0 backdrop-blur-[1px]" />
           <div className="relative px-6 py-3 flex items-center justify-between">
-            <CardTitle className="text-2xl">Profile</CardTitle>
+            <CardTitle className="text-2xl text-teal-700 dark:text-teal-400">Profile</CardTitle>
 
             {profile.links?.resume && (
               <Button
@@ -61,7 +61,7 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
               </Avatar>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-slate-400">
+            <div className="flex items-center gap-2 text-sm text-black dark:text-white">
               <MapPin className="h-4 w-4" />
               <span className="truncate max-w-[16rem]">{profile.address}</span>
             </div>
@@ -86,25 +86,25 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
           {/* Right: details */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="space-y-1">
-              <p className="text-sm text-slate-400">Name</p>
+              <p className="text-sm text-black dark:text-white">Name</p>
               <p className="font-medium">{profile.name}</p>
               <Separator className="my-2" />
 
-              <p className="text-sm text-slate-400">Email</p>
+              <p className="text-sm text-black dark:text-white">Email</p>
               <p className="font-medium break-all">{profile.email}</p>
               <Separator className="my-2" />
 
-              <p className="text-sm text-slate-400">Address</p>
+              <p className="text-sm text-black dark:text-white">Address</p>
               <p className="font-medium">{profile.address}</p>
             </div>
 
             <div className="space-y-2">
-              <p className="text-sm text-slate-400">Education</p>
+              <p className="text-sm text-black dark:text-white">Education</p>
               <ul className="space-y-2 text-sm">
                 {profile.education.map((e) => (
                   <li key={e.level} className="flex items-center justify-between gap-3">
                     <span className="font-medium">{e.level}</span>
-                    <span className="text-slate-400">
+                    <span className="text-black dark:text-white">
                       {e.institution} — {e.year}
                     </span>
                   </li>

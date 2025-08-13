@@ -13,20 +13,20 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Header() {
   return (
-    <header className="relative overflow-hidden border-b bg-gradient-to-r from-teal-500 to-transparent bg-size-200 animate-gradient-x">
+    <header className="relative overflow-hidden border-b bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent bg-size-200 animate-gradient-x">
       <span className="pointer-events-none absolute inset-0 dot-pattern opacity-30 blur-sm animate-dots" />
       <div className="relative container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="text-lg font-semibold text-teal-600 hover:text-teal-700">
+        <Link href="/" className="text-lg font-semibold text-teal-700 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300">
           Seanne Cañete
         </Link>
         <div className="flex items-center gap-2">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-gradient-to-r from-teal-500 to-transparent bg-size-200 bg-clip-text text-transparent animate-gradient-x">
+                <NavigationMenuTrigger className="bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent bg-size-200 bg-clip-text text-transparent animate-gradient-x">
                   Menu
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="relative overflow-hidden rounded-md bg-gradient-to-r from-teal-500 to-transparent bg-size-200 animate-gradient-x">
+                <NavigationMenuContent className="relative overflow-hidden rounded-md bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent bg-size-200 animate-gradient-x">
                   <span className="pointer-events-none absolute inset-0 dot-pattern opacity-30 blur-sm animate-dots" />
                   <ul className="relative z-10 flex flex-col p-2">
                     <li>
@@ -79,7 +79,7 @@ export default function Header() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <ModeToggle className="text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300" />
+          <ModeToggle className="text-teal-700 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300" />
         </div>
       </div>
     </header>
