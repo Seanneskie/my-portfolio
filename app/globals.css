@@ -5,46 +5,46 @@
 
 /* Map CSS variables to Tailwind theme tokens (v4) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: rgb(var(--background) / <alpha-value>);
+  --color-foreground: rgb(var(--foreground) / <alpha-value>);
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
   --font-mono: ui-monospace, SFMono-Regular, "Courier New", monospace;
 
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  --color-border: rgb(var(--border) / <alpha-value>);
+  --color-input: rgb(var(--input) / <alpha-value>);
+  --color-ring: rgb(var(--ring) / <alpha-value>);
 
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-card: rgb(var(--card) / <alpha-value>);
+  --color-card-foreground: rgb(var(--card-foreground) / <alpha-value>);
+  --color-popover: rgb(var(--popover) / <alpha-value>);
+  --color-popover-foreground: rgb(var(--popover-foreground) / <alpha-value>);
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-destructive: var(--destructive);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary: rgb(var(--primary) / <alpha-value>);
+  --color-primary-foreground: rgb(var(--primary-foreground) / <alpha-value>);
+  --color-secondary: rgb(var(--secondary) / <alpha-value>);
+  --color-secondary-foreground: rgb(var(--secondary-foreground) / <alpha-value>);
+  --color-accent: rgb(var(--accent) / <alpha-value>);
+  --color-accent-foreground: rgb(var(--accent-foreground) / <alpha-value>);
+  --color-muted: rgb(var(--muted) / <alpha-value>);
+  --color-muted-foreground: rgb(var(--muted-foreground) / <alpha-value>);
+  --color-destructive: rgb(var(--destructive) / <alpha-value>);
+  --color-sidebar: rgb(var(--sidebar) / <alpha-value>);
+  --color-sidebar-foreground: rgb(var(--sidebar-foreground) / <alpha-value>);
+  --color-sidebar-primary: rgb(var(--sidebar-primary) / <alpha-value>);
+  --color-sidebar-primary-foreground: rgb(var(--sidebar-primary-foreground) / <alpha-value>);
+  --color-sidebar-accent: rgb(var(--sidebar-accent) / <alpha-value>);
+  --color-sidebar-accent-foreground: rgb(var(--sidebar-accent-foreground) / <alpha-value>);
+  --color-sidebar-border: rgb(var(--sidebar-border) / <alpha-value>);
+  --color-sidebar-ring: rgb(var(--sidebar-ring) / <alpha-value>);
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+  --color-chart-1: rgb(var(--chart-1) / <alpha-value>);
+  --color-chart-2: rgb(var(--chart-2) / <alpha-value>);
+  --color-chart-3: rgb(var(--chart-3) / <alpha-value>);
+  --color-chart-4: rgb(var(--chart-4) / <alpha-value>);
+  --color-chart-5: rgb(var(--chart-5) / <alpha-value>);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
