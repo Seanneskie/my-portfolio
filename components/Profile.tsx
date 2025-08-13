@@ -29,7 +29,6 @@ interface ProfileProps {
     resume?: string;
   };
   background: string;
-  onHireMe?: () => void;
 }
 
 const ProfileSection: React.FC<ProfileProps> = ({
@@ -40,8 +39,11 @@ const ProfileSection: React.FC<ProfileProps> = ({
   education,
   socialLinks,
   background,
-  onHireMe,
 }) => {
+  const handleHireMe = () => {
+    window.open(`mailto:${email}`);
+  };
+
   return (
     <>
       <section id="profile" className="animate-fade-in">
@@ -141,13 +143,16 @@ const ProfileSection: React.FC<ProfileProps> = ({
         </div>
       </section>
 
-      <section id="background" className="mt-12 animate-fade-in">
-        <h2 className="mb-2 text-xl font-bold text-primary">Background</h2>
-        <p className="mb-4 text-foreground">{background}</p>
-        <button
-          className="rounded-md border-2 border-primary px-5 py-2 text-primary bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 animate-gradient-x transition-colors hover:from-primary hover:via-accent hover:to-secondary hover:text-primary-foreground"
-          onClick={onHireMe}
-        >
+      <section
+        id="background"
+        data-aos="fade-right"
+        data-aos-duration="800"
+        data-aos-delay="100"
+      >
+        <h2>Background</h2>
+        <p>{background}</p>
+        <button className="hire-me" onClick={handleHireMe}>
+
           Hire Me
         </button>
       </section>
