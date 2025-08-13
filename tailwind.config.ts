@@ -5,6 +5,11 @@ const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        radial: "radial-gradient(var(--tw-gradient-stops))",
+        conic:
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",
@@ -52,6 +57,26 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "gradient-x": {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "100% 50%",
+          },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 1s ease-in-out",
+        "gradient-x": "gradient-x 8s ease infinite",
       },
     },
   },

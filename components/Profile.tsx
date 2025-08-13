@@ -44,67 +44,86 @@ const ProfileSection: React.FC<ProfileProps> = ({
 }) => {
   return (
     <>
-      <section
-        id="profile"
-        data-aos="fade-up"
-        data-aos-duration="800"
-        data-aos-delay="100"
-      >
-        <div className="profile-container">
-          <div className="profile-image">
-            <img
-              src={profileImage}
-              alt="Profile Picture"
-              loading="lazy"
-              width={250}
-              height={250}
-            />
-          </div>
-          <div className="profile-content">
-            <h2>Profile</h2>
-            <p className="card-text">
-              <strong>Name:</strong> {name}
+      <section id="profile" className="animate-fade-in">
+        <div className="flex flex-wrap items-center gap-5 rounded-lg bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 p-6">
+          <img
+            src={profileImage}
+            alt="Profile Picture"
+            loading="lazy"
+            width={250}
+            height={250}
+            className="max-w-[250px] rounded-full shadow-md"
+          />
+          <div className="flex-1 min-w-[200px] space-y-1">
+            <h2 className="text-xl font-bold text-primary">Profile</h2>
+            <p className="text-foreground">
+              <strong className="text-secondary-foreground">Name:</strong> {name}
             </p>
-            <p className="card-text">
-              <strong>Email:</strong> {email}
+            <p className="text-foreground">
+              <strong className="text-secondary-foreground">Email:</strong> {email}
             </p>
-            <p className="card-text">
-              <strong>Address:</strong> {address}
+            <p className="text-foreground">
+              <strong className="text-secondary-foreground">Address:</strong> {address}
             </p>
           </div>
-          <div className="educ-bg">
-            <h2>Education</h2>
+          <div className="flex-1 min-w-[200px] space-y-1">
+            <h2 className="text-xl font-bold text-primary">Education</h2>
             {education.map((edu, index) => (
-              <p key={index} className="card-text">
-                <strong>{edu.level}:</strong> {edu.institution} - {edu.year}
+              <p key={index} className="text-foreground">
+                <strong className="text-secondary-foreground">{edu.level}:</strong> {edu.institution} - {edu.year}
               </p>
             ))}
           </div>
         </div>
 
-        <div className="social-links flex gap-3">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-12">
           {socialLinks.facebook && (
-            <a href={socialLinks.facebook} target="_blank" rel="noreferrer">
+            <a
+              href={socialLinks.facebook}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-primary"
+            >
               <Facebook size={20} />
             </a>
           )}
           {socialLinks.twitter && (
-            <a href={socialLinks.twitter} target="_blank" rel="noreferrer">
+            <a
+              href={socialLinks.twitter}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-primary"
+            >
               <Twitter size={20} />
             </a>
           )}
           {socialLinks.linkedin && (
-            <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-primary"
+            >
               <Linkedin size={20} />
             </a>
           )}
           {socialLinks.github && (
-            <a href={socialLinks.github} target="_blank" rel="noreferrer">
+            <a
+              href={socialLinks.github}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-primary"
+            >
               <Github size={20} />
             </a>
           )}
           {socialLinks.leetcode && (
-            <a href={socialLinks.leetcode} target="_blank" rel="noreferrer">
+            <a
+              href={socialLinks.leetcode}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-primary"
+            >
               <Code size={20} />
             </a>
           )}
@@ -114,6 +133,7 @@ const ProfileSection: React.FC<ProfileProps> = ({
               target="_blank"
               rel="noreferrer"
               download
+              className="transition-colors hover:text-primary"
             >
               <FileText size={20} />
             </a>
@@ -121,15 +141,13 @@ const ProfileSection: React.FC<ProfileProps> = ({
         </div>
       </section>
 
-      <section
-        id="background"
-        data-aos="fade-right"
-        data-aos-duration="800"
-        data-aos-delay="100"
-      >
-        <h2>Background</h2>
-        <p>{background}</p>
-        <button className="hire-me" onClick={onHireMe}>
+      <section id="background" className="mt-12 animate-fade-in">
+        <h2 className="mb-2 text-xl font-bold text-primary">Background</h2>
+        <p className="mb-4 text-foreground">{background}</p>
+        <button
+          className="rounded-md border-2 border-primary px-5 py-2 text-primary bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 animate-gradient-x transition-colors hover:from-primary hover:via-accent hover:to-secondary hover:text-primary-foreground"
+          onClick={onHireMe}
+        >
           Hire Me
         </button>
       </section>
