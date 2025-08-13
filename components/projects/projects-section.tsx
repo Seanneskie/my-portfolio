@@ -21,14 +21,24 @@ const PROJECTS = gql`
 `;
 
 export default function ProjectsSection() {
-  const { data, loading, error } = useQuery(PROJECTS);
+  interface Project {
+    id: string;
+    title: string;
+    description?: string;
+    tags: string[];
+    url?: string;
+    thumb?: string;
+  }
+
+  const { data, loading, error } = useQuery<{ projects: Project[] }>(PROJECTS);
 
   if (loading) return <p>Loading projects…</p>;
   if (error) return <p>Failed to load projects.</p>;
+  if (!data) return null;
 
   return (
     <div className="grid gap-6 sm:grid-cols-2">
-      {data.projects.map((p: any, i: number) => (
+        {data.projects.map((p: Project, i: number) => (
         <motion.div
           key={p.id}
           initial={{ opacity: 0, y: 12 }}
