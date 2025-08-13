@@ -18,8 +18,8 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
     <Card className="overflow-hidden relative">
       <CardHeader className="p-0">
         <div className="relative">
-          <div className="h-14 w-full bg-gradient-to-r from-primary/15 via-accent/15 to-secondary/15 animate-gradient-x" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+          <div className="h-14 w-full bg-gradient-to-r from-[#1E3A8A]/15 via-[#14B8A6]/15 to-[#E2E8F0]/15 animate-gradient-x" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#1E3A8A]/40 to-transparent" />
           <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(60%_80%_at_20%_0%,#000_10%,transparent_60%)]" />
           <div className="absolute inset-0 backdrop-blur-[1px]" />
           <div className="relative px-6 py-3 flex items-center justify-between">
@@ -53,7 +53,7 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
           {/* Left: Avatar + quick facts */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <div className="relative">
-              <Avatar className="h-24 w-24 ring-2 ring-primary/30 shadow-sm transition-transform duration-300 hover:scale-[1.02]">
+              <Avatar className="h-24 w-24 ring-2 ring-[#1E3A8A]/30 shadow-sm transition-transform duration-300 hover:scale-[1.02]">
                 <AvatarImage src={profile.image} alt={profile.name} />
                 <AvatarFallback className="font-semibold">
                   {getInitials(profile.name)}
@@ -61,7 +61,7 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
               </Avatar>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-slate-400">
               <MapPin className="h-4 w-4" />
               <span className="truncate max-w-[16rem]">{profile.address}</span>
             </div>
@@ -86,25 +86,25 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
           {/* Right: details */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="space-y-1">
-              <p className="text-sm text-muted-foreground">Name</p>
+              <p className="text-sm text-slate-400">Name</p>
               <p className="font-medium">{profile.name}</p>
               <Separator className="my-2" />
 
-              <p className="text-sm text-muted-foreground">Email</p>
+              <p className="text-sm text-slate-400">Email</p>
               <p className="font-medium break-all">{profile.email}</p>
               <Separator className="my-2" />
 
-              <p className="text-sm text-muted-foreground">Address</p>
+              <p className="text-sm text-slate-400">Address</p>
               <p className="font-medium">{profile.address}</p>
             </div>
 
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">Education</p>
+              <p className="text-sm text-slate-400">Education</p>
               <ul className="space-y-2 text-sm">
                 {profile.education.map((e) => (
                   <li key={e.level} className="flex items-center justify-between gap-3">
                     <span className="font-medium">{e.level}</span>
-                    <span className="text-muted-foreground">
+                    <span className="text-slate-400">
                       {e.institution} — {e.year}
                     </span>
                   </li>
