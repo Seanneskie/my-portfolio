@@ -40,7 +40,6 @@ export default function HomePage() {
           resume: "/static/canete_resume.pdf",
         }}
         background="Hello! I'm Seanne Cañete, an Information Technology graduate at Mindanao State University – General Santos City with a passion for full-stack development..."
-        onHireMe={() => window.open("mailto:seannecanete32@gmail.com")}
       />
 
       <h1 className="text-3xl font-bold tracking-tight mb-6">My Work</h1>
