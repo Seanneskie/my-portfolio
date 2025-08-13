@@ -29,7 +29,6 @@ interface ProfileProps {
     resume?: string;
   };
   background: string;
-  onHireMe?: () => void;
 }
 
 const ProfileSection: React.FC<ProfileProps> = ({
@@ -40,8 +39,11 @@ const ProfileSection: React.FC<ProfileProps> = ({
   education,
   socialLinks,
   background,
-  onHireMe,
 }) => {
+  const handleHireMe = () => {
+    window.open(`mailto:${email}`);
+  };
+
   return (
     <>
       <section
@@ -129,7 +131,7 @@ const ProfileSection: React.FC<ProfileProps> = ({
       >
         <h2>Background</h2>
         <p>{background}</p>
-        <button className="hire-me" onClick={onHireMe}>
+        <button className="hire-me" onClick={handleHireMe}>
           Hire Me
         </button>
       </section>
