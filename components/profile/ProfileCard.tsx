@@ -18,8 +18,8 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
     <Card className="overflow-hidden relative">
       <CardHeader className="p-0">
         <div className="relative">
-          <div className="h-14 w-full bg-gradient-to-r from-blue-900/15 via-teal-500/15 to-slate-200/15 dark:from-blue-500/15 dark:via-teal-400/15 dark:to-gray-700/15 animate-gradient-x" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-900/40 dark:via-blue-500/40 to-transparent" />
+          <div className="h-14 w-full bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 dark:from-blue-500/15 dark:via-purple-500/15 dark:to-pink-500/15 animate-gradient-x" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-pink-500/40 dark:from-blue-500/40 dark:via-purple-500/40 dark:to-pink-500/40" />
           <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(60%_80%_at_20%_0%,black_10%,transparent_60%)]" />
           <div className="absolute inset-0 backdrop-blur-[1px]" />
           <div className="relative px-6 py-3 flex items-center justify-between">

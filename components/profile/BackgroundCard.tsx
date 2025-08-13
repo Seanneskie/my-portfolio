@@ -13,7 +13,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
       <CardHeader className="pb-3">
         <CardTitle>Background</CardTitle>
       </CardHeader>
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-500/40 dark:via-teal-400/40 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-pink-500/40 dark:from-blue-500/40 dark:via-purple-500/40 dark:to-pink-500/40" />
 
       <CardContent className="space-y-4">
         <p className="leading-relaxed text-gray-900/90 dark:text-gray-100/90">{profile.background}</p>
@@ -38,7 +38,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
             <Button
               asChild
               variant="outline"
-              className="gap-2 transition-[background-position] bg-gradient-to-r from-transparent via-teal-500/20 dark:via-teal-400/20 to-transparent bg-[length:200%_100%] hover:animate-shine"
+              className="gap-2 transition-[background-position] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-pink-500/20 bg-[length:200%_100%] hover:animate-shine"
               onClick={() => toast.info("Opening resume…")}
             >
               <a href={profile.links.resume} target="_blank" rel="noreferrer">
