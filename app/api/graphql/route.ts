@@ -13,11 +13,24 @@ async function loadJson<T>(file: string): Promise<T> {
 interface Project {
   id: string;
   title: string;
+  image: string;
+  alt: string;
   description?: string;
+  collaborators?: string;
   tags: string[];
-  url?: string;
-  thumb?: string;
+  github?: string | null;
+  githubLabel?: string | null;
+  details?: string;
+  period?: string;
 }
+
+type ProjectFile = Omit<Project, "id">;
+
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 interface Profile {
   name: string;
@@ -43,6 +56,7 @@ const typeDefs = /* GraphQL */ `
   }
 
   type Project {
+    id: ID!
     title: String!
     image: String!
     alt: String!
@@ -105,6 +119,7 @@ const typeDefs = /* GraphQL */ `
 
   type Query {
     projects: [Project!]!
+    project(id: ID!): Project
     skills: [SkillCategory!]!
     achievements: [Achievement!]!
     certificates: [Certificate!]!
@@ -118,13 +133,21 @@ const typeDefs = /* GraphQL */ `
 
 const resolvers = {
   Query: {
-    projects: async () => (await loadJson<{ projects: Project[] }>("projects.json")).projects,
+    projects: async () => {
+      const projects = await loadJson<ProjectFile[]>("projects.json");
+      return projects.map((p) => ({ ...p, id: slugify(p.title) }));
+    },
     project: async (_: unknown, { id }: { id: string }) => {
-      const { projects } = await loadJson<{ projects: Project[] }>("projects.json");
-      return projects.find((p) => p.id === id) ?? null;
+      const projects = await loadJson<ProjectFile[]>("projects.json");
+      return (
+        projects
+          .map((p) => ({ ...p, id: slugify(p.title) }))
+          .find((p) => p.id === id) ?? null
+      );
     },
     skills: async () => (await loadJson<{ skills: string[] }>("skills.json")).skills,
-    profile: async () => (await loadJson<{ profile: Profile }>("profile.json")).profile,    achievements: async () => await loadJson("achievements.json"),
+    profile: async () => (await loadJson<{ profile: Profile }>("profile.json")).profile,
+    achievements: async () => await loadJson("achievements.json"),
     certificates: async () => await loadJson("certificates.json"),
     courses: async () => await loadJson("courses.json"),
     testimonials: async () => await loadJson("testimonials.json"),
