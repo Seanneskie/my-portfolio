@@ -171,6 +171,19 @@
     accent-color: hsl(var(--primary));
   }
 
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(hsl(var(--foreground) / 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+  }
+
   ::selection {
     background-color: hsl(var(--primary) / 0.2);
     color: hsl(var(--foreground));
