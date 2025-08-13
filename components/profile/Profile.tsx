@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { toast } from "sonner";
 import {
   Facebook,
@@ -53,8 +52,8 @@ const PROFILE = {
 
 
 // Assumes PROFILE is available in scope (as in your snippet).
-// If you'd rather pass it as a prop, switch to: function ProfileSection({ PROFILE }: { PROFILE: Profile })
-export default function ProfileSection() {
+// If you'd rather pass it as a prop, switch to: function Profile({ PROFILE }: { PROFILE: Profile })
+export default function Profile() {
   const initials = (name?: string) =>
     (name ?? "SC")
       .split(" ")
