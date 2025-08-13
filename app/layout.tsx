@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ApolloWrapper from "./apollo-provider";
 import { Toaster } from "sonner";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +32,10 @@ export default function RootLayout({
         {/* Global notifications (Sonner) */}
         <Toaster theme="system" richColors closeButton position="top-right" />
 
+        <Header />
         {/* Apollo provider */}
         <ApolloWrapper>{children}</ApolloWrapper>
+        <Footer />
       </body>
     </html>
   );

@@ -7,6 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  url?: string;
+  thumb?: string;
+}
+
 const PROJECTS = gql`
   query Projects {
     projects {
@@ -28,7 +37,7 @@ export default function ProjectsSection() {
 
   return (
     <div className="grid gap-6 sm:grid-cols-2">
-      {data.projects.map((p: any, i: number) => (
+      {data.projects.map((p: Project, i: number) => (
         <motion.div
           key={p.id}
           initial={{ opacity: 0, y: 12 }}
