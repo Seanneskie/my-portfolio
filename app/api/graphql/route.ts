@@ -159,4 +159,10 @@ const resolvers = {
 const schema = createSchema({ typeDefs, resolvers });
 const yoga = createYoga({ schema, graphqlEndpoint: "/api/graphql" });
 
-export { yoga as GET, yoga as POST };
+export function GET(request: Request) {
+  return yoga({ request });
+}
+
+export function POST(request: Request) {
+  return yoga({ request });
+}
