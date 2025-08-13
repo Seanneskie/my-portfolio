@@ -37,8 +37,8 @@ const config: Config = {
           foreground: "rgb(var(--muted-foreground) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
-          foreground: "rgb(var(--accent-foreground) / <alpha-value>)",
+          DEFAULT: "#4f8cff",
+          foreground: "#f8fafc",
         },
         popover: {
           DEFAULT: "rgb(var(--popover) / <alpha-value>)",
