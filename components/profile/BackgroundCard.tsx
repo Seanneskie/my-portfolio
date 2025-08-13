@@ -11,12 +11,12 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
   return (
     <Card id="background" className="relative">
       <CardHeader className="pb-3">
-        <CardTitle>Background</CardTitle>
+        <CardTitle className="text-teal-700 dark:text-teal-400">Background</CardTitle>
       </CardHeader>
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-pink-500/40 dark:from-blue-500/40 dark:via-purple-500/40 dark:to-pink-500/40" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
 
       <CardContent className="space-y-4">
-        <p className="leading-relaxed text-gray-900/90 dark:text-gray-100/90">{profile.background}</p>
+        <p className="leading-relaxed text-black dark:text-white">{profile.background}</p>
 
         <div className="flex flex-wrap gap-3">
           <Button onClick={() => openMailTo(profile.email)} className="gap-2">
@@ -38,7 +38,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
             <Button
               asChild
               variant="outline"
-              className="gap-2 transition-[background-position] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-pink-500/20 bg-[length:200%_100%] hover:animate-shine"
+              className="gap-2 transition-[background-position] bg-gradient-to-r from-teal-600/20 via-teal-500/15 to-transparent dark:from-teal-400/20 dark:via-teal-400/10 dark:to-transparent bg-[length:200%_100%] hover:animate-shine"
               onClick={() => toast.info("Opening resume…")}
             >
               <a href={profile.links.resume} target="_blank" rel="noreferrer">
