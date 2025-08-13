@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="border-t">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 text-sm text-muted-foreground">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 text-sm text-gray-500 dark:text-gray-400">
         <p>&copy; {new Date().getFullYear()} Seanne Cañete</p>
         <div className="flex gap-4">
           <Link

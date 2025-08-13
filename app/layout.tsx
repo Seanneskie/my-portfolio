@@ -17,7 +17,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased min-h-screen bg-background text-foreground font-sans">
+      <body className="antialiased min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* Global notifications (Sonner) */}
           <Toaster
