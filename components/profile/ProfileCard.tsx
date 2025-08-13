@@ -18,9 +18,9 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
     <Card className="overflow-hidden relative">
       <CardHeader className="p-0">
         <div className="relative">
-          <div className="h-14 w-full bg-gradient-to-r from-[#1E3A8A]/15 via-[#14B8A6]/15 to-[#E2E8F0]/15 animate-gradient-x" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#1E3A8A]/40 to-transparent" />
-          <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(60%_80%_at_20%_0%,#000_10%,transparent_60%)]" />
+          <div className="h-14 w-full bg-gradient-to-r from-blue-900/15 via-teal-500/15 to-slate-200/15 dark:from-blue-500/15 dark:via-teal-400/15 dark:to-gray-700/15 animate-gradient-x" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-900/40 dark:via-blue-500/40 to-transparent" />
+          <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(60%_80%_at_20%_0%,black_10%,transparent_60%)]" />
           <div className="absolute inset-0 backdrop-blur-[1px]" />
           <div className="relative px-6 py-3 flex items-center justify-between">
             <CardTitle className="text-2xl">Profile</CardTitle>
@@ -53,7 +53,7 @@ export default function ProfileCard({ profile }: { profile: ProfileData }) {
           {/* Left: Avatar + quick facts */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <div className="relative">
-              <Avatar className="h-24 w-24 ring-2 ring-[#1E3A8A]/30 shadow-sm transition-transform duration-300 hover:scale-[1.02]">
+              <Avatar className="h-24 w-24 ring-2 ring-blue-900/30 dark:ring-blue-500/30 shadow-sm transition-transform duration-300 hover:scale-[1.02]">
                 <AvatarImage src={profile.image} alt={profile.name} />
                 <AvatarFallback className="font-semibold">
                   {getInitials(profile.name)}

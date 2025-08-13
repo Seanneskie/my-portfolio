@@ -52,7 +52,7 @@ export default function ProjectsSection() {
             ) : null}
 
             <h3 className="font-semibold text-lg">{p.title}</h3>
-            <p className="text-sm text-muted-foreground mt-1">{p.description}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{p.description}</p>
 
             <div className="flex flex-wrap gap-2 mt-3">
               {p.tags.map((t: string) => (
