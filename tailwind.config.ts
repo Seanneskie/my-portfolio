@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: ["class"],
@@ -73,13 +73,18 @@ const config: Config = {
             "background-position": "100% 50%",
           },
         },
+        shine: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
       },
       animation: {
         "fade-in": "fade-in 1s ease-in-out",
         "gradient-x": "gradient-x 8s ease infinite",
+        shine: "shine 1.1s linear infinite",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
-export default config
+};
+export default config;
