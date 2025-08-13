@@ -54,45 +54,45 @@
 
 /* ===== Design Tokens (Light / Dark) ===== */
 :root {
-  --background: 210 40% 98%;
-  --foreground: 222 47% 11%;
-  --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
+  --background: 248 250 252; /* #f8fafc */
+  --foreground: 15 23 41; /* #0f172a */
+  --card: 255 255 255; /* #ffffff */
+  --card-foreground: 15 23 41; /* #0f172a */
+  --popover: 255 255 255; /* #ffffff */
+  --popover-foreground: 15 23 41; /* #0f172a */
 
   /* Primary: Navy #1E3A8A */
-  --primary: 224 64% 33%;
-  --primary-foreground: 210 40% 98%;
+  --primary: 30 59 138;
+  --primary-foreground: 248 250 252; /* #f8fafc */
 
   /* Secondary: subtle slate surface */
-  --secondary: 214 32% 91%;
-  --secondary-foreground: 222 47% 11%;
+  --secondary: 225 231 239; /* #e2e8f0 */
+  --secondary-foreground: 15 23 41; /* #0f172a */
 
   /* Accent: Teal #14B8A6 */
-  --accent: 173 80% 40%;
-  --accent-foreground: 210 40% 98%;
+  --accent: 20 184 165;
+  --accent-foreground: 248 250 252; /* #f8fafc */
 
   /* Muted + border */
-  --muted: 214 27% 84%;
-  --muted-foreground: 215 20% 65%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 198 89% 48%; /* Sky #0EA5E9 */
+  --muted: 203 213 225; /* #cbd5e1 */
+  --muted-foreground: 148 163 184; /* #94a3b8 */
+  --border: 225 231 239; /* #e2e8f0 */
+  --input: 225 231 239; /* #e2e8f0 */
+  --ring: 13 166 231; /* #0ea5e9 */
 
   /* Destructive */
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 239 67 67; /* #ef4444 */
+  --destructive-foreground: 248 250 252; /* #f8fafc */
 
   /* Radii */
   --radius: 0.75rem;
 
   /* Charts */
-  --chart-1: 224 64% 33%; /* navy */
-  --chart-2: 198 89% 48%; /* sky */
-  --chart-3: 173 80% 40%; /* teal */
-  --chart-4: 27 96% 61%;  /* orange */
-  --chart-5: 215 25% 27%; /* slate 700 */
+  --chart-1: 30 59 138; /* navy */
+  --chart-2: 13 166 231; /* sky */
+  --chart-3: 20 184 165; /* teal */
+  --chart-4: 251 146 60;  /* orange */
+  --chart-5: 52 66 86; /* slate 700 */
 
   /* Sidebar aliases */
   --sidebar: var(--card);
@@ -106,38 +106,38 @@
 }
 
 .dark {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
+  --background: 15 23 41; /* #0f172a */
+  --foreground: 248 250 252; /* #f8fafc */
 
-  --card: 222 47% 13%;
-  --card-foreground: 210 40% 98%;
+  --card: 18 27 49; /* #121b31 */
+  --card-foreground: 248 250 252; /* #f8fafc */
 
-  --popover: 222 47% 13%;
-  --popover-foreground: 210 40% 98%;
+  --popover: 18 27 49; /* #121b31 */
+  --popover-foreground: 248 250 252; /* #f8fafc */
 
-  --primary: 224 64% 60%; /* lighter navy for dark */
-  --primary-foreground: 222 47% 11%;
+  --primary: 88 123 218; /* lighter navy for dark */
+  --primary-foreground: 15 23 41; /* #0f172a */
 
-  --secondary: 220 15% 20%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 43 48 59; /* #2b303b */
+  --secondary-foreground: 248 250 252; /* #f8fafc */
 
-  --accent: 173 80% 45%;
-  --accent-foreground: 222 47% 11%;
+  --accent: 23 207 185; /* teal */
+  --accent-foreground: 15 23 41; /* #0f172a */
 
-  --muted: 220 15% 20%;
-  --muted-foreground: 214 27% 84%;
-  --border: 220 15% 20%;
-  --input: 220 15% 20%;
-  --ring: 198 89% 60%;
+  --muted: 43 48 59;
+  --muted-foreground: 203 213 225;
+  --border: 43 48 59;
+  --input: 43 48 59;
+  --ring: 62 189 244;
 
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 239 67 67;
+  --destructive-foreground: 248 250 252;
 
-  --chart-1: 224 64% 60%;
-  --chart-2: 198 89% 60%;
-  --chart-3: 173 80% 45%;
-  --chart-4: 27 96% 61%;
-  --chart-5: 215 25% 65%;
+  --chart-1: 88 123 218;
+  --chart-2: 62 189 244;
+  --chart-3: 23 207 185;
+  --chart-4: 251 146 60;
+  --chart-5: 143 162 188;
 
   /* Sidebar aliases */
   --sidebar: var(--card);
@@ -168,12 +168,12 @@
 
   body {
     @apply bg-background text-foreground;
-    accent-color: hsl(var(--primary));
+    accent-color: rgb(var(--primary));
   }
 
   ::selection {
-    background-color: hsl(var(--primary) / 0.2);
-    color: hsl(var(--foreground));
+    background-color: rgb(var(--primary) / 0.2);
+    color: rgb(var(--foreground));
   }
 
   /* Accessible default focus ring */
