@@ -2,12 +2,27 @@ import { createSchema, createYoga } from "graphql-yoga";
 import fs from "node:fs/promises";
 import path from "node:path";
 
-export const runtime = "nodejs";          // allow fs access
-export const dynamic = "force-dynamic";   // don’t cache, reflect file changes
+export const runtime = "nodejs"; // allow fs access
+export const dynamic = "force-dynamic"; // don’t cache, reflect file changes
 
 async function loadJson<T>(file: string): Promise<T> {
   const p = path.join(process.cwd(), "data", file);
-  return JSON.parse(await fs.readFile(p, "utf8"));
+  return JSON.parse(await fs.readFile(p, "utf8")) as T;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  description?: string;
+  tags: string[];
+  url?: string;
+  thumb?: string;
+}
+
+interface Profile {
+  name: string;
+  headline: string;
+  bio?: string;
 }
 
 const typeDefs = /* GraphQL */ `
@@ -103,15 +118,18 @@ const typeDefs = /* GraphQL */ `
 
 const resolvers = {
   Query: {
-    projects: async () => await loadJson("projects.json"),
-    skills: async () => await loadJson("skills.json"),
-    achievements: async () => await loadJson("achievements.json"),
+    projects: async () => (await loadJson<{ projects: Project[] }>("projects.json")).projects,
+    project: async (_: unknown, { id }: { id: string }) => {
+      const { projects } = await loadJson<{ projects: Project[] }>("projects.json");
+      return projects.find((p) => p.id === id) ?? null;
+    },
+    skills: async () => (await loadJson<{ skills: string[] }>("skills.json")).skills,
+    profile: async () => (await loadJson<{ profile: Profile }>("profile.json")).profile,    achievements: async () => await loadJson("achievements.json"),
     certificates: async () => await loadJson("certificates.json"),
     courses: async () => await loadJson("courses.json"),
     testimonials: async () => await loadJson("testimonials.json"),
     workExperiences: async () => await loadJson("work-experiences.json"),
     blogPosts: async () => await loadJson("blog-posts.json"),
-    profile: async () => await loadJson("profile.json"),
   },
 };
 

@@ -7,6 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  url?: string;
+  thumb?: string;
+}
+
 const PROJECTS = gql`
   query Projects {
     projects {
