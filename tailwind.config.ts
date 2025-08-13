@@ -1,14 +1,18 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
-  darkMode: "class",
-  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  darkMode: ["class"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
       backgroundImage: {
         radial: "radial-gradient(var(--tw-gradient-stops))",
-        conic:
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        conic: "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
@@ -44,7 +48,6 @@ const config: Config = {
           DEFAULT: "hsl(var(--card) / <alpha-value>)",
           foreground: "hsl(var(--card-foreground) / <alpha-value>)",
         },
-        // Optional: chart aliases
         chart: {
           1: "hsl(var(--chart-1) / <alpha-value>)",
           2: "hsl(var(--chart-2) / <alpha-value>)",
@@ -85,6 +88,25 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    // Small utility plugin(s)
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        // Safari-friendly mask for your header glow
+        ".mask-glow": {
+          "mask-image":
+            "radial-gradient(60% 80% at 20% 0%, #000 10%, transparent 60%)",
+          "-webkit-mask-image":
+            "radial-gradient(60% 80% at 20% 0%, #000 10%, transparent 60%)",
+        },
+        // Optional helper if you want static oversized gradients
+        ".bg-size-200": {
+          "background-size": "200% 200%",
+        },
+      });
+    }),
+  ],
 };
+
 export default config;
