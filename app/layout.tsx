@@ -5,6 +5,7 @@ import ApolloWrapper from "./apollo-provider";
 import { Toaster } from "sonner";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,13 +30,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
       >
-        {/* Global notifications (Sonner) */}
-        <Toaster theme="system" richColors closeButton position="top-right" />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* Global notifications (Sonner) */}
+          <Toaster
+            theme="system"
+            richColors
+            closeButton
+            position="top-right"
+          />
 
-        <Header />
-        {/* Apollo provider */}
-        <ApolloWrapper>{children}</ApolloWrapper>
-        <Footer />
+          <Header />
+          {/* Apollo provider */}
+          <ApolloWrapper>{children}</ApolloWrapper>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
