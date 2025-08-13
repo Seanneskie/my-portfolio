@@ -6,12 +6,14 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Header() {
   return (
-    <header className="border-b">
+    <header className="border-b bg-gradient-to-r from-primary/20 via-secondary/20 to-background bg-size-200 animate-gradient-x">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="text-lg font-semibold">
           Seanne Cañete
@@ -20,10 +22,30 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/">Home</NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="#projects">Projects</NavigationMenuLink>
+                <NavigationMenuTrigger className="bg-gradient-to-r from-primary via-accent to-primary bg-size-200 bg-clip-text text-transparent animate-gradient-x">
+                  Menu
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="flex flex-col p-2">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/" className="transition-colors duration-300 hover:text-accent">
+                          Home
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href="#projects"
+                          className="transition-colors duration-300 hover:text-accent"
+                        >
+                          Projects
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
