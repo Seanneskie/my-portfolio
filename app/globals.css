@@ -34,4 +34,22 @@
   }
 
   .bg-size-200 { background-size: 200% 200%; }
+
+  .dot-pattern {
+    background-image: radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  @keyframes dot-move {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 40px 40px;
+    }
+  }
+
+  .animate-dots {
+    animation: dot-move 8s linear infinite;
+  }
 }

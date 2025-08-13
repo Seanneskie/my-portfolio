@@ -13,8 +13,9 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Header() {
   return (
-    <header className="border-b bg-gradient-to-r from-primary via-secondary to-accent bg-size-200 animate-gradient-x">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="relative overflow-hidden border-b bg-gradient-to-r from-primary via-secondary to-accent bg-size-200 animate-gradient-x">
+      <span className="pointer-events-none absolute inset-0 dot-pattern opacity-30 blur-sm animate-dots" />
+      <div className="relative container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="text-lg font-semibold">
           Seanne Cañete
         </Link>
@@ -25,8 +26,9 @@ export default function Header() {
                 <NavigationMenuTrigger className="bg-gradient-to-r from-primary via-secondary to-accent bg-size-200 bg-clip-text text-transparent animate-gradient-x">
                   Menu
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="flex flex-col p-2">
+                <NavigationMenuContent className="relative overflow-hidden rounded-md bg-gradient-to-r from-primary via-secondary to-accent bg-size-200 animate-gradient-x">
+                  <span className="pointer-events-none absolute inset-0 dot-pattern opacity-30 blur-sm animate-dots" />
+                  <ul className="relative z-10 flex flex-col p-2">
                     <li>
                       <NavigationMenuLink asChild>
                         <Link href="/" className="transition-colors duration-300 hover:text-accent">
