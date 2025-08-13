@@ -13,7 +13,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Header() {
   return (
-    <header className="border-b bg-gradient-to-r from-primary/20 via-secondary/20 to-background bg-size-200 animate-gradient-x">
+    <header className="border-b bg-gradient-to-r from-primary via-secondary to-accent bg-size-200 animate-gradient-x">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="text-lg font-semibold">
           Seanne Cañete
@@ -22,7 +22,7 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-gradient-to-r from-primary via-accent to-primary bg-size-200 bg-clip-text text-transparent animate-gradient-x">
+                <NavigationMenuTrigger className="bg-gradient-to-r from-primary via-secondary to-accent bg-size-200 bg-clip-text text-transparent animate-gradient-x">
                   Menu
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -36,11 +36,39 @@ export default function Header() {
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
+                        <Link href="/projects" className="transition-colors duration-300 hover:text-accent">
+                          Projects
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/courses" className="transition-colors duration-300 hover:text-accent">
+                          Courses
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/certificates" className="transition-colors duration-300 hover:text-accent">
+                          Certificates
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/awards" className="transition-colors duration-300 hover:text-accent">
+                          Awards
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
                         <Link
-                          href="#projects"
+                          href="/work-experiences"
                           className="transition-colors duration-300 hover:text-accent"
                         >
-                          Projects
+                          Work Experiences
                         </Link>
                       </NavigationMenuLink>
                     </li>
