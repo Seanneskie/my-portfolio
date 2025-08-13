@@ -10,12 +10,12 @@ import Image from "next/image";
 const PROJECTS = gql`
   query Projects {
     projects {
-      id
       title
+      image
+      alt
       description
       tags
-      url
-      thumb
+      github
     }
   }
 `;
@@ -26,19 +26,28 @@ export default function ProjectsSection() {
   if (loading) return <p>Loading projects…</p>;
   if (error) return <p>Failed to load projects.</p>;
 
+  interface Project {
+    title: string;
+    image: string;
+    alt: string;
+    description?: string;
+    tags: string[];
+    github?: string;
+  }
+
   return (
     <div className="grid gap-6 sm:grid-cols-2">
-      {data.projects.map((p: any, i: number) => (
+      {data.projects.map((p: Project, i: number) => (
         <motion.div
-          key={p.id}
+          key={p.title}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.05, duration: 0.35 }}
         >
           <Card className="p-4 hover:shadow-lg transition">
-            {p.thumb ? (
+            {p.image ? (
               <div className="relative mb-3 aspect-video overflow-hidden rounded-lg">
-                <Image src={p.thumb} alt={p.title} fill className="object-cover" />
+                <Image src={p.image} alt={p.alt} fill className="object-cover" />
               </div>
             ) : null}
 
@@ -51,8 +60,8 @@ export default function ProjectsSection() {
               ))}
             </div>
 
-            {p.url ? (
-              <Link href={p.url} className="inline-block mt-4 underline">
+            {p.github ? (
+              <Link href={p.github} className="inline-block mt-4 underline">
                 View project →
               </Link>
             ) : null}
