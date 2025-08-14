@@ -13,6 +13,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/other-projects", label: "Other Projects" },
   { href: "/courses", label: "Courses" },
   { href: "/certificates", label: "Certificates" },
   { href: "/awards", label: "Awards" },
