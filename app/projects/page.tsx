@@ -248,15 +248,21 @@ export default function ProjectsPage() {
           size="sm"
           onClick={() => setPage((p) => Math.max(1, p - 1))}
           disabled={page === 1}
+          className="bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white border-0"
         >
           Previous
         </Button>
         {Array.from({ length: totalPages }, (_, idx) => (
           <Button
             key={idx}
-            variant={page === idx + 1 ? "default" : "outline"}
+            variant="outline"
             size="sm"
             onClick={() => setPage(idx + 1)}
+            className={
+              page === idx + 1
+                ? "bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white border-0"
+                : undefined
+            }
           >
             {idx + 1}
           </Button>
@@ -266,6 +272,7 @@ export default function ProjectsPage() {
           size="sm"
           onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
           disabled={page === totalPages}
+          className="bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white border-0"
         >
           Next
         </Button>
