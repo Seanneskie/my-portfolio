@@ -66,7 +66,12 @@ export default function ProjectsSection() {
 
             <div className="flex gap-4 mt-4">
               {p.details ? (
-                <Link href={`/${p.details}`} className="underline">
+                <Link
+                  href={`/project-details/${p.details
+                    .replace(/^project-details\//, "")
+                    .replace(/\.html$/, "")}`}
+                  className="underline"
+                >
                   Project details →
                 </Link>
               ) : null}
