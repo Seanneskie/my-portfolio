@@ -87,6 +87,8 @@ const typeDefs = /* GraphQL */ `
     title: String!
     code: String!
     institution: String!
+    description: String
+    credits: Int
   }
 
   type Testimonial {

@@ -2,12 +2,15 @@
   {
     "title": "Advance Databases",
     "code": "ITE152",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "description": "Covers advanced database concepts and optimization strategies.",
+    "credits": 3
   },
   {
     "title": "Big Data Analytics",
     "code": "ITD105",
-    "institution": "Mindanao State University - General Santos"
+    "institution": "Mindanao State University - General Santos",
+    "credits": 3
   },
   {
     "title": "Business Intelligence",
