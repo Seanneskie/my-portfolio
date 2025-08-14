@@ -1,5 +1,6 @@
 import Profile, { MyStory } from "@/components/profile";
 import Banner from "@/components/banner";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -32,6 +33,14 @@ export default function HomePage() {
       <div className="container mx-auto max-w-7xl space-y-16 px-4 py-12">
         <Profile />
         <MyStory />
+        <div className="flex justify-center">
+          <Link
+            href="/profile"
+            className="inline-block rounded-full bg-gradient-to-r from-teal-500 via-cyan-400 to-blue-500 bg-size-200 animate-gradient-x px-8 py-3 text-white shadow-lg transition-transform hover:scale-105"
+          >
+            View more of me
+          </Link>
+        </div>
         <h1 className="mb-6 text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
           My Work
         </h1>
