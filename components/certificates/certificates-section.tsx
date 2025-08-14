@@ -90,12 +90,16 @@ export default function CertificatesSection() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <Input
           placeholder="Search certificates"
+          aria-label="Search certificates"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="sm:max-w-xs"
+          className="sm:max-w-xs focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
         />
         <Select value={tag} onValueChange={setTag}>
-          <SelectTrigger className="sm:w-56">
+          <SelectTrigger
+            aria-label="Filter by tag"
+            className="sm:w-56 focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+          >
             <SelectValue placeholder="All tags" />
           </SelectTrigger>
           <SelectContent>
@@ -183,11 +187,16 @@ export default function CertificatesSection() {
                           {c.desc}
                         </p>
                         {c.link && (
-                          <Button asChild size="sm" className="mt-4">
+                          <Button
+                            asChild
+                            size="sm"
+                            className="mt-4 focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+                          >
                             <a
                               href={c.link}
                               target="_blank"
                               rel="noopener noreferrer"
+                              aria-label={`View ${c.title} certificate`}
                             >
                               View certificate
                             </a>
