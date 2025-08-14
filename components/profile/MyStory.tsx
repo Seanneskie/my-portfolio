@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StorySkills from "./StorySkills";
+import OtherSkills from "./OtherSkills";
 
 export default function MyStory() {
   const whatIDo = [
@@ -72,6 +73,7 @@ export default function MyStory() {
         </Card>
         <StorySkills />
       </div>
+      <OtherSkills />
     </section>
   );
 }
