@@ -9,40 +9,75 @@ import type { ProfileData } from "./types";
 
 export default function BackgroundCard({ profile }: { profile: ProfileData }) {
   return (
-    <Card id="background" className="relative">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-teal-700 dark:text-teal-400">Background</CardTitle>
-      </CardHeader>
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
+    <Card id="background" className="relative overflow-hidden">
+      {/* subtle backdrop accent */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-teal-600/10 via-teal-500/5 to-transparent dark:from-teal-400/10 dark:via-teal-400/5 dark:to-transparent"
+      />
 
-      <CardContent className="space-y-4">
-        <p className="leading-relaxed text-black dark:text-white">{profile.background}</p>
+      <CardHeader className="relative z-10 pb-2">
+        <CardTitle className="text-base font-semibold tracking-wide text-black dark:text-white">
+          Background
+        </CardTitle>
+      </CardHeader>
+
+      <div className="absolute inset-x-0 top-[52px] h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
+
+      <CardContent className="relative z-10 space-y-5">
+        <p className="max-w-prose leading-relaxed text-black dark:text-white whitespace-pre-line">
+          {profile.background}
+        </p>
 
         <div className="flex flex-wrap gap-3">
-          <Button onClick={() => openMailTo(profile.email)} className="gap-2">
-            <Mail size={16} /> Hire Me
+          {/* Primary: animated gradient */}
+          <Button
+            onClick={() => openMailTo(profile.email)}
+            className={[
+              "group gap-2 text-white",
+              "bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500",
+              "bg-[length:200%_200%] animate-gradient-x",
+              "shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300",
+              "hover:-translate-y-0.5",
+              "focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none",
+            ].join(" ")}
+          >
+            <Mail className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            Hire Me
           </Button>
 
-          <Button asChild variant="secondary" className="gap-2">
+          {/* Secondary: simple email with subject */}
+          <Button
+            asChild
+            variant="secondary"
+            className="gap-2 hover:translate-y-[-1px] transition"
+          >
             <a
               href={`mailto:${profile.email}?subject=${encodeURIComponent(
                 "Inquiry about collaboration / Hire"
               )}`}
               onClick={() => toast.info("Opening your email client…")}
             >
-              <Mail size={16} /> Email
+              <Mail className="h-4 w-4" /> Email
             </a>
           </Button>
 
+          {/* Outline: subtle shimmer on hover */}
           {profile.links?.resume && (
             <Button
               asChild
               variant="outline"
-              className="gap-2 transition-[background-position] bg-gradient-to-r from-teal-600/20 via-teal-500/15 to-transparent dark:from-teal-400/20 dark:via-teal-400/10 dark:to-transparent bg-[length:200%_100%] hover:animate-shine"
+              className={[
+                "gap-2",
+                "ring-1 ring-teal-600/30 dark:ring-teal-400/30",
+                "hover:bg-teal-600/10 dark:hover:bg-teal-400/10",
+                "bg-[length:200%_100%] hover:animate-shine",
+                "transition-[background-position,transform] hover:-translate-y-0.5",
+              ].join(" ")}
               onClick={() => toast.info("Opening resume…")}
             >
               <a href={profile.links.resume} target="_blank" rel="noreferrer">
-                <FileText size={16} /> View Resume
+                <FileText className="h-4 w-4" /> View Resume
               </a>
             </Button>
           )}
