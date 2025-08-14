@@ -1,23 +1,19 @@
 "use client";
 
-import { Code2, Database, LineChart, Layout, Brain, MapPinned, ShieldCheck, FileText } from "lucide-react";
+import {
+  Code2,
+  Database,
+  LineChart,
+  Layout,
+  Brain,
+  MapPinned,
+  ShieldCheck,
+  FileText,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import StorySkills from "./StorySkills";
 
 export default function MyStory() {
-  const skills = {
-    "Web Development": [
-      "React", "Next.js", "Django", "Laravel 12", "TypeScript", "JavaScript",
-      "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "jQuery"
-    ],
-    "Backend & APIs": ["Django (Python)", "Laravel (PHP)", "REST APIs", "Supabase"],
-    "Databases": ["MySQL", "PostgreSQL", "MongoDB", "SQL", "NoSQL"],
-    "Data & AI": ["Python", "Pandas", "Scikit-learn", "Matplotlib", "TensorFlow", "LangChain"],
-    "Visualization": ["Chart.js", "Looker Studio", "Tableau"],
-    "Geospatial": ["Leaflet", "GIS"],
-    "Tools": ["Git", "GitHub", "VS Code", "Google Cloud"]
-  };
-
   const whatIDo = [
     { icon: <Code2 className="h-5 w-5" />, title: "Full-stack Apps", blurb: "Build responsive, production-ready web apps with Next.js/React, Django/Laravel, and Supabase." },
     { icon: <Database className="h-5 w-5" />, title: "Database Design", blurb: "Model schemas, write efficient SQL, and optimize MySQL/PostgreSQL/MongoDB." },
@@ -31,9 +27,13 @@ export default function MyStory() {
 
   return (
     <section className="space-y-8">
-      <div className="space-y-3">
-        <h1 className="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">My Story</h1>
-        <div className="text-black/90 dark:text-white/90 space-y-4 leading-relaxed">
+      <Card className="border border-teal-600/10 dark:border-teal-400/10">
+        <CardHeader>
+          <CardTitle className="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
+            My Story
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-black/90 dark:text-white/90 leading-relaxed">
           <p>
             It started with games. I wanted to understand how worlds were built—so I tinkered with game engines,
             learned basic scripting, and shipped tiny prototypes. That curiosity pulled me toward software and
@@ -41,17 +41,17 @@ export default function MyStory() {
           </p>
           <p>
             I explored a bit of cybersecurity along the way, then doubled down on what clicked: databases and data
-            analysis. Designing schemas, writing fast queries, and turning raw data into decisions felt like a superpower.
-            From there I kept leveling up—adopting modern frameworks, building full-stack apps, and integrating data
-            workflows with clean, reliable UIs.
+            analysis. Designing schemas, writing fast queries, and turning raw data into decisions felt like a
+            superpower. From there I kept leveling up—adopting modern frameworks, building full-stack apps, and
+            integrating data workflows with clean, reliable UIs.
           </p>
           <p>
             Today I focus on shipping practical, well-designed systems: full-stack apps with solid data models,
             clear dashboards, and interfaces that stay out of the way. I move fast but document clearly, so teams
             can build on top with confidence.
           </p>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Card className="border border-teal-600/10 dark:border-teal-400/10">
@@ -70,26 +70,7 @@ export default function MyStory() {
             ))}
           </CardContent>
         </Card>
-
-        <Card className="border border-teal-600/10 dark:border-teal-400/10">
-          <CardHeader>
-            <CardTitle className="text-xl">Core Skills</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            {Object.entries(skills).map(([group, tags]) => (
-              <div key={group} className="space-y-2">
-                <p className="text-sm font-semibold text-teal-700 dark:text-teal-400">{group}</p>
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((t) => (
-                    <Badge key={t} variant="secondary" className="rounded-full">
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+        <StorySkills />
       </div>
     </section>
   );
