@@ -17,6 +17,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <body className="antialiased min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* Global notifications (Sonner) */}
