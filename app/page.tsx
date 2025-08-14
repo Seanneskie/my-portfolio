@@ -30,8 +30,8 @@ export default function HomePage() {
         }
       />
       <div className="container mx-auto max-w-7xl space-y-16 px-4 py-12">
-        <MyStory />
         <Profile />
+        <MyStory />
         <h1 className="mb-6 text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
           My Work
         </h1>
