@@ -67,7 +67,7 @@ export default function CertificatesSection() {
 
   if (loading) {
     return (
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {[...Array(6)].map((_, i) => (
           <Card
             key={i}
@@ -124,7 +124,7 @@ export default function CertificatesSection() {
       ) : (
         <ul
           role="list"
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
             {certificates.map((c: Certificate, i: number) => (
@@ -166,15 +166,6 @@ export default function CertificatesSection() {
                                 {t}
                               </Badge>
                             ))}
-                          </div>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent className="pt-2">
-                        <p className="text-sm text-gray-700 dark:text-gray-200">
-                          {c.desc}
-                        </p>
-                        {c.skills.length > 0 && (
-                          <div className="mt-3 flex flex-wrap gap-2">
                             {c.skills.map((s) => (
                               <Badge
                                 key={s}
@@ -185,7 +176,12 @@ export default function CertificatesSection() {
                               </Badge>
                             ))}
                           </div>
-                        )}
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="pt-2">
+                        <p className="text-sm text-gray-700 dark:text-gray-200">
+                          {c.desc}
+                        </p>
                         {c.link && (
                           <Button asChild size="sm" className="mt-4">
                             <a

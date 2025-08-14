@@ -246,76 +246,76 @@
     ]
   },
   {
-    "tags": [],
+    "tags": ["workshop", "bpi"],
     "title": "Workshop #1 Design Thinking Workshop | BPI DATA Wave 2024",
     "desc": "Design Thinking Workshop of BPI DATA Wave Date: September 2024",
-    "skills": []
+    "skills": ["DesignThinking"]
   },
   {
-    "tags": [],
+    "tags": ["conference", "cybersecurity"],
     "title": "Decode 2024",
     "desc": "The Philippines' Largest Cybersecurity Conference. Date: June 2024",
-    "skills": []
+    "skills": ["Cybersecurity"]
   },
   {
-    "tags": [],
+    "tags": ["roadshow", "animation"],
     "title": "Animation Industry Roadshow",
     "desc": "Animation is a filmmaking technique by which still images are manipulated to create moving images. Date: June 2024",
-    "skills": []
+    "skills": ["Animation"]
   },
   {
-    "tags": [],
+    "tags": ["workshop", "biodiversity"],
     "title": "Capacity Building on the Full Usage of the Marine Biodiversity Website",
     "desc": "This is a project under the Applied Biodiversity ReseArch for Holistic Advancements in Mindanao (ABRAHAM) Program which oversees projects assessing and documenting the reef fish diversity in Davao Region and the Sulu Archipelago Date: September 2023",
-    "skills": []
+    "skills": ["Research"]
   },
   {
-    "tags": [],
+    "tags": ["devcon", "git"],
     "title": "No more code chaos: Git Good and Stay Organized",
     "desc": "Campus DevCon 2023 Date: May 2023",
     "link": "/static/certificates/sem4.png",
-    "skills": []
+    "skills": ["VersionControl"]
   },
   {
-    "tags": [],
+    "tags": ["devcon", "ai"],
     "title": "Revolutionizing the Future: Exploring the Power of AI Tools and their Impact",
     "desc": "Campus DevCon 2023 Date: May 2023",
     "link": "/static/certificates/sem1.png",
-    "skills": []
+    "skills": ["AI"]
   },
   {
-    "tags": [],
+    "tags": ["devcon", "cybersecurity"],
     "title": "Introduction to Cybersecurity: Building Awareness in Today\u2019s Digital World",
     "desc": "Campus DevCon 2023 Date: May 2023",
     "link": "/static/certificates/sem2.png",
-    "skills": []
+    "skills": ["Cybersecurity"]
   },
   {
-    "tags": [],
+    "tags": ["devcon", "technopreneurship"],
     "title": "Your Path in Technopreneurship",
     "desc": "Campus DevCon 2023 Date: May 2023",
     "link": "/static/certificates/sem3.png",
-    "skills": []
+    "skills": ["Entrepreneurship"]
   },
   {
-    "tags": [],
+    "tags": ["devcon", "devsecops"],
     "title": "DevSecOps for Starters",
     "desc": "Campus DevCon 2023 Date: May 2023",
     "link": "/static/certificates/sem5.png",
-    "skills": []
+    "skills": ["DevSecOps"]
   },
   {
-    "tags": [],
+    "tags": ["devcon", "cloud"],
     "title": "Careers in Cloud Computing",
     "desc": "Campus DevCon 2023 Date: May 2023",
     "link": "/static/certificates/sem7.png",
-    "skills": []
+    "skills": ["CloudComputing"]
   },
   {
-    "tags": [],
+    "tags": ["devcon", "technopreneurship"],
     "title": "Your Path in Technopreneurship",
     "desc": "Campus DevCon 2023 Date: May 2023",
     "link": "/static/certificates/sem6.png",
-    "skills": []
+    "skills": ["Entrepreneurship"]
   }
 ]
