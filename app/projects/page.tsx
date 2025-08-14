@@ -115,12 +115,12 @@ export default function ProjectsPage() {
     <main className="container mx-auto max-w-5xl px-4 py-12">
       <h1 className="mb-4 text-3xl font-bold tracking-tight">Projects</h1>
 
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mb-6 flex flex-col gap-4">
         <Input
           placeholder="Search projects..."
           value={search}
           onChange={handleSearch}
-          className="sm:max-w-xs"
+          className="w-full"
         />
         <div className="flex flex-wrap gap-2">
           {allTags.map((tag) => (
