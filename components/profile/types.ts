@@ -11,6 +11,7 @@ export interface Links {
   github?: string;
   leetcode?: string;
   resume?: string;
+  website?: string;
 }
 
 export interface ProfileData {
@@ -22,3 +23,4 @@ export interface ProfileData {
   education: Education[];
   links: Links;
 }
+
