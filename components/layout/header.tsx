@@ -13,7 +13,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Header() {
   return (
-    <header className="relative overflow-hidden border-b bg-gradient-to-r from-teal-600/15 to-transparent dark:from-teal-400/15 dark:to-transparent">
+    <header className="relative z-50 border-b bg-gradient-to-r from-teal-600/15 to-transparent dark:from-teal-400/15 dark:to-transparent">
       <span className="pointer-events-none absolute inset-0 dot-pattern opacity-20 blur-sm" />
       <div className="relative container mx-auto flex h-16 items-center justify-between px-4">
         {/* Brand */}
