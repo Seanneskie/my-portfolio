@@ -105,21 +105,40 @@ export default function ProjectsSection() {
             {/* Actions */}
             <div className="mt-4 flex flex-wrap gap-2">
               {p.details ? (
-                <Link
-                  href={`/project-details/${p.details
-                    .replace(/^project-details\//, "")
-                    .replace(/\.html$/, "")}`}
-                  className="inline-flex items-center text-teal-700 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 dark:text-teal-300"
+                <Button
+                  size="sm"
+                  asChild
+                  className={[
+                    "group gap-2 text-white",
+                    "bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500",
+                    "bg-[length:200%_200%] animate-gradient-x",
+                    "shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300",
+                    "hover:-translate-y-0.5",
+                    "focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none",
+                  ].join(" ")}
                 >
-                  Project details →
-                </Link>
+                  <Link
+                    href={`/project-details/${p.details
+                      .replace(/^project-details\//, "")
+                      .replace(/\.html$/, "")}`}
+                  >
+                    Project details →
+                  </Link>
+                </Button>
               ) : null}
 
               {p.github ? (
                 <Button
+                  size="sm"
                   asChild
-                  variant="outline"
-                  className="border-teal-300 text-teal-700 hover:bg-teal-50 hover:text-teal-800 dark:border-teal-800 dark:text-teal-200 dark:hover:bg-teal-900/30"
+                  className={[
+                    "group gap-2 text-white",
+                    "bg-gradient-to-r from-purple-600 via-pink-500 to-rose-500",
+                    "bg-[length:200%_200%] animate-gradient-x",
+                    "shadow-md hover:shadow-lg transition-[transform,box-shadow,background-position] duration-300",
+                    "hover:-translate-y-0.5",
+                    "focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none",
+                  ].join(" ")}
                 >
                   <Link href={p.github}>{p.githubLabel ?? "View project"}</Link>
                 </Button>
