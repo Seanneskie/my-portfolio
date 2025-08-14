@@ -6,7 +6,7 @@ export default function HomePage() {
       <section className="relative flex h-[60vh] items-center justify-center text-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/static/bg.jpg)" }}
+          style={{ backgroundImage: "url(/static/bg_2.jpg)" }}
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-3xl px-4 text-white">
