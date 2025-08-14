@@ -46,6 +46,14 @@ interface Course {
   credits?: number;
 }
 
+interface Certificate {
+  tags: string[];
+  title: string;
+  desc: string;
+  link?: string;
+  skills: string[];
+}
+
 const typeDefs = /* GraphQL */ `
   type SkillItem {
     icon: String!
@@ -132,7 +140,7 @@ const typeDefs = /* GraphQL */ `
     project(id: ID!): Project
     skills: [SkillCategory!]!
     achievements: [Achievement!]!
-    certificates: [Certificate!]!
+    certificates(search: String, tag: String): [Certificate!]!
     courses(search: String, institution: String): [Course!]!
     testimonials: [Testimonial!]!
     workExperiences: [WorkExperience!]!
@@ -158,7 +166,31 @@ const resolvers = {
     skills: async () => (await loadJson<{ skills: string[] }>("skills.json")).skills,
     profile: async () => (await loadJson<{ profile: Profile }>("profile.json")).profile,
     achievements: async () => await loadJson("achievements.json"),
-    certificates: async () => await loadJson("certificates.json"),
+    certificates: async (
+      _: unknown,
+      { search, tag }: { search?: string; tag?: string }
+    ) => {
+      const certificates = await loadJson<Certificate[]>("certificates.json");
+      let filtered = certificates;
+
+      const term = search?.toLowerCase();
+      if (term) {
+        filtered = filtered.filter(
+          (c) =>
+            c.title.toLowerCase().includes(term) ||
+            c.desc.toLowerCase().includes(term)
+        );
+      }
+
+      if (tag) {
+        const tagLower = tag.toLowerCase();
+        filtered = filtered.filter((c) =>
+          c.tags.some((t) => t.toLowerCase() === tagLower)
+        );
+      }
+
+      return filtered;
+    },
     courses: async (
       _: unknown,
       { search, institution }: { search?: string; institution?: string }
