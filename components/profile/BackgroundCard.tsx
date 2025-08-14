@@ -5,81 +5,105 @@ import Autoplay from "embla-carousel-autoplay";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, FileText } from "lucide-react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { openMailTo } from "@/lib/profile";
 import { toast } from "sonner";
 import type { ProfileData } from "./types";
 
 export default function BackgroundCard({ profile }: { profile: ProfileData }) {
   const autoplay = React.useRef(
-    Autoplay({ delay: 4500, stopOnInteraction: false })
+    Autoplay({ delay: 4500, stopOnInteraction: true })
   );
 
+  // Dots state
+  const [api, setApi] = React.useState<CarouselApi | null>(null);
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
+
   const slides = [
-    // 1 — role & focus
     "I’m a dedicated Django Web App Developer with hands-on full-stack experience. I build seamless, user-friendly systems that turn real-world problems into simple, reliable workflows.",
-    // 2 — differentiator
-    "What sets me apart is bridging technical depth and business needs—leveraging Next.js 15, React, and Django. I’ve designed impactful systems like a vessel inventory management platform and a government information system.",
-    // 3 — outcomes & recognition
-    "Recent projects improved operational efficiency by 70%+ and streamlined data workflows by 50%+. I’ve earned Cum Laude honors and won multiple national competitions—evidence of drive and adaptability.",
-    // 4 — goals
-    "I’m excited to grow further in full-stack development and welcome intros to opportunities or advice. I aim to contribute my expertise to innovative, collaborative teams."
+    "I bridge technical depth and business needs—leveraging Next.js 15, React, and Django. I’ve shipped systems like a vessel inventory platform and a government information system.",
+    "Recent projects improved operational efficiency by 70%+ and streamlined data workflows by 50%+. I earned Cum Laude honors and won multiple national competitions.",
+    "I’m excited to keep growing in full-stack and welcome introductions or advice. I love contributing to innovative, collaborative teams.",
   ];
 
   return (
     <Card id="background" className="relative overflow-hidden">
-      {/* subtle card backdrop */}
+      {/* subtle backdrop wash */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-to-r from-teal-600/10 via-teal-500/5 to-transparent dark:from-teal-400/10 dark:via-teal-400/5 dark:to-transparent"
       />
 
       <CardHeader className="relative z-10 pb-2">
-        <CardTitle className="text-base font-semibold tracking-wide text-black dark:text-white">
-          Background
-        </CardTitle>
+         <CardTitle className="text-sm font-semibold uppercase tracking-wide text-black/70 dark:text-white/70">
+            Background
+          </CardTitle>
       </CardHeader>
 
       <div className="absolute inset-x-0 top-[52px] h-px bg-gradient-to-r from-teal-600/20 to-transparent dark:from-teal-400/20 dark:to-transparent" />
 
       <CardContent className="relative z-10">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-[35%_65%] items-stretch">
-          {/* LEFT: portrait image fills column */}
-          <div className="relative h-64 md:h-auto overflow-hidden rounded-xl ring-1 ring-teal-600/20 dark:ring-teal-400/20 shadow-sm">
-            <img
-              src="/static/image_1.jpg"
-              alt="Profile portrait"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent dark:from-black/20" />
-          </div>
-
-          {/* RIGHT: text carousel + CTAs */}
-          <div className="flex min-h-64 flex-col justify-between gap-4">
+        {/* Image on the RIGHT; ensure no overlap with z-index + spacing */}
+        <div className="grid items-stretch gap-8 md:grid-cols-[1fr_36%]">
+          {/* LEFT: Description carousel (serif, centered, larger) */}
+          <div className="relative z-10 flex flex-col">
             <Carousel
               opts={{ loop: true, align: "start" }}
               plugins={[autoplay.current]}
+              setApi={setApi}
               className="w-full"
+              onMouseEnter={() => autoplay.current?.stop()}
+              onMouseLeave={() => autoplay.current?.play()}
+              aria-roledescription="carousel"
             >
-              <CarouselContent>
+              <CarouselContent className="pb-2">
                 {slides.map((text, i) => (
                   <CarouselItem key={i} className="px-1">
-                    <p className="leading-relaxed text-black dark:text-white">
-                      {text}
-                    </p>
+                    <div className="rounded-xl border border-neutral-200/60 bg-neutral-50/70 p-6 md:p-8 text-center backdrop-blur-sm dark:border-neutral-800/60 dark:bg-neutral-900/60">
+                      <p className="mx-auto max-w-3xl font-serif text-lg leading-relaxed text-black md:text-xl dark:text-white">
+                        {text}
+                      </p>
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-
-              <div className="mt-3 flex items-center gap-2">
-                <CarouselPrevious className="h-8 w-8" />
-                <CarouselNext className="h-8 w-8" />
-              </div>
             </Carousel>
 
-            <div className="mt-2 flex flex-wrap gap-3">
-              {/* Primary: animated gradient */}
+            {/* DOTS (no page buttons) */}
+            <div className="mt-4 flex justify-center gap-2">
+              {Array.from({ length: count }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => api?.scrollTo(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  aria-current={i === current ? "true" : undefined}
+                  className={[
+                    "h-2.5 w-2.5 rounded-full transition-colors",
+                    i === current
+                      ? "bg-teal-600 dark:bg-teal-400"
+                      : "bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-700 dark:hover:bg-neutral-600",
+                  ].join(" ")}
+                />
+              ))}
+            </div>
+
+            {/* CTAs — spaced to avoid any overlap */}
+            <div className="mt-6 flex flex-wrap gap-3">
               <Button
+                size="sm"
                 onClick={() => openMailTo(profile.email)}
                 className={[
                   "group gap-2 text-white",
@@ -94,25 +118,9 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
                 Hire Me
               </Button>
 
-              {/* Secondary: email with subject */}
-              <Button
-                asChild
-                variant="secondary"
-                className="gap-2 hover:translate-y-[-1px] transition"
-              >
-                <a
-                  href={`mailto:${profile.email}?subject=${encodeURIComponent(
-                    "Inquiry about collaboration / Hire"
-                  )}`}
-                  onClick={() => toast.info("Opening your email client…")}
-                >
-                  <Mail className="h-4 w-4" /> Email
-                </a>
-              </Button>
-
-              {/* Outline: resume (shimmer) */}
               {profile.links?.resume && (
                 <Button
+                  size="sm"
                   asChild
                   variant="outline"
                   className={[
@@ -124,11 +132,27 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
                   ].join(" ")}
                   onClick={() => toast.info("Opening resume…")}
                 >
-                  <a href={profile.links.resume} target="_blank" rel="noreferrer">
-                    <FileText className="h-4 w-4" /> View Resume
+                  <a
+                    href={profile.links.resume}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FileText className="h-4 w-4" />
+                    View Resume
                   </a>
                 </Button>
               )}
+            </div>
+          </div>
+
+          {/* RIGHT: Portrait image (fixed crop & position) */}
+          <div className="order-last overflow-hidden rounded-xl ring-1 ring-teal-600/20 shadow-sm dark:ring-teal-400/20 md:order-none">
+            <div className="relative h-72 w-full overflow-hidden rounded-xl">
+              <img
+                src="/static/image_2.jpg"
+                alt="Profile portrait"
+                className="absolute inset-0 h-full w-full object-cover object-top"
+              />
             </div>
           </div>
         </div>
