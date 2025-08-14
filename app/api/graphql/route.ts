@@ -38,6 +38,14 @@ interface Profile {
   bio?: string;
 }
 
+interface Course {
+  title: string;
+  code: string;
+  institution: string;
+  description?: string;
+  credits?: number;
+}
+
 const typeDefs = /* GraphQL */ `
   type SkillItem {
     icon: String!
@@ -125,7 +133,7 @@ const typeDefs = /* GraphQL */ `
     skills: [SkillCategory!]!
     achievements: [Achievement!]!
     certificates: [Certificate!]!
-    courses: [Course!]!
+    courses(search: String, institution: String): [Course!]!
     testimonials: [Testimonial!]!
     workExperiences: [WorkExperience!]!
     blogPosts: [BlogPost!]!
@@ -151,7 +159,22 @@ const resolvers = {
     profile: async () => (await loadJson<{ profile: Profile }>("profile.json")).profile,
     achievements: async () => await loadJson("achievements.json"),
     certificates: async () => await loadJson("certificates.json"),
-    courses: async () => await loadJson("courses.json"),
+    courses: async (
+      _: unknown,
+      { search, institution }: { search?: string; institution?: string }
+    ) => {
+      const courses = await loadJson<Course[]>("courses.json");
+      return courses.filter((c) => {
+        const term = search?.toLowerCase();
+        const matchesSearch =
+          !term ||
+          c.code.toLowerCase().includes(term) ||
+          c.title.toLowerCase().includes(term);
+        const matchesInstitution =
+          !institution || c.institution === institution;
+        return matchesSearch && matchesInstitution;
+      });
+    },
     testimonials: async () => await loadJson("testimonials.json"),
     workExperiences: async () => await loadJson("work-experiences.json"),
     blogPosts: async () => await loadJson("blog-posts.json"),

@@ -29,8 +29,8 @@ interface Course {
 }
 
 const COURSES = gql`
-  query Courses {
-    courses {
+  query Courses($search: String, $institution: String) {
+    courses(search: $search, institution: $institution) {
       code
       title
       institution
@@ -41,27 +41,26 @@ const COURSES = gql`
 `;
 
 export default function CoursesSection() {
-  const { data, loading, error } = useQuery(COURSES);
   const [search, setSearch] = useState("");
   const [institution, setInstitution] = useState("");
 
+  const { data: allData } = useQuery<{ courses: Course[] }>(COURSES);
+  const { data, loading, error } = useQuery<{ courses: Course[] }>(COURSES, {
+    variables: {
+      search: search || undefined,
+      institution: institution || undefined,
+    },
+  });
+
   const courses: Course[] = useMemo(() => data?.courses ?? [], [data]);
 
-  const institutions = useMemo(
+  const institutions = useMemo<string[]>(
     () =>
-      Array.from(new Set(courses.map((c: Course) => c.institution))).sort(),
-    [courses]
+      Array.from(
+        new Set((allData?.courses ?? []).map((c: Course) => c.institution))
+      ).sort(),
+    [allData]
   );
-
-  const filteredCourses = courses.filter((c: Course) => {
-    const term = search.toLowerCase();
-    const matchesSearch =
-      c.code.toLowerCase().includes(term) ||
-      c.title.toLowerCase().includes(term);
-    const matchesInstitution =
-      !institution || c.institution === institution;
-    return matchesSearch && matchesInstitution;
-  });
 
   if (loading) {
     return (
@@ -111,7 +110,7 @@ export default function CoursesSection() {
           Clear filters
         </Button>
       </div>
-      {filteredCourses.length === 0 ? (
+      {courses.length === 0 ? (
         <p className="text-gray-700 dark:text-gray-200">
           No courses match your search.
         </p>
@@ -121,7 +120,7 @@ export default function CoursesSection() {
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
-            {filteredCourses.map((c: Course, i: number) => (
+            {courses.map((c: Course, i: number) => (
               <motion.li
                 key={c.code}
                 role="listitem"
