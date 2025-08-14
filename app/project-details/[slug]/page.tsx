@@ -2,13 +2,14 @@ import { promises as fs } from "fs";
 import path from "path";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const filePath = path.join(process.cwd(), "public", "project-details", `${params.slug}.html`);
+  const { slug } = await params;
+  const filePath = path.join(process.cwd(), "public", "project-details", `${slug}.html`);
   let html = "";
 
   try {
