@@ -90,10 +90,14 @@ export default function MyStory() {
               {/* Left: narrative */}
               <div className="space-y-5 text-black/90 leading-relaxed dark:text-white/90">
                 <p className="first:first-letter:float-left first:first-letter:mr-2 first:first-letter:text-5xl first:first-letter:font-extrabold first:first-letter:text-teal-600 dark:first:first-letter:text-teal-300">
-                  I’m a BSIT (Major in Database) graduate—cum laude—who found a
-                  groove at the intersection of data and full-stack engineering.
-                  Hackathons sharpened my pace and teamwork, while real projects
-                  turned skills into systems people use.
+                  I’m a BSIT (Major in Database) graduate—
+                  <span className="font-semibold text-teal-700 dark:text-teal-300">
+                    cum laude
+                  </span>
+                  —who found my groove at the intersection of data and
+                  full-stack engineering. Hackathons sharpened both my pace and
+                  teamwork, while real projects turned those skills into systems
+                  people rely on.
                 </p>
 
                 <p>
@@ -101,23 +105,24 @@ export default function MyStory() {
                   <span className="rounded-md bg-teal-500/10 px-1 py-0.5 font-medium text-teal-700 dark:text-teal-300">
                     COTSEYE
                   </span>{" "}
-                  (Django + JS crowd-mapping for Crown-of-Thorns monitoring),{" "}
+                  (a Django + JS crowd-mapping tool for Crown-of-Thorns
+                  monitoring),{" "}
                   <span className="rounded-md bg-teal-500/10 px-1 py-0.5 font-medium text-teal-700 dark:text-teal-300">
                     VIMS
                   </span>{" "}
-                  (Next.js + Supabase vessel inventory), and an{" "}
+                  (a Next.js + Supabase vessel inventory system), and an{" "}
                   <span className="rounded-md bg-teal-500/10 px-1 py-0.5 font-medium text-teal-700 dark:text-teal-300">
-                    LGU fund utilization & cooperative profiling
+                    LGU fund-utilization & cooperative-profiling platform
                   </span>{" "}
-                  system (Django). Along the way I doubled down on clean schemas,
-                  fast queries, and dashboards that tell the truth.
+                  (Django). Along the way, I doubled down on clean schemas, fast
+                  queries, and dashboards that tell the truth.
                 </p>
 
                 <p>
-                  Today I focus on shipping practical, well-designed systems:
+                  Today, I focus on shipping practical, well-designed systems—
                   normalized data models, reliable APIs, and interfaces that stay
                   out of the way. I move fast, measure impact, and document
-                  clearly so teams can build with confidence.
+                  everything clearly so teams can build with confidence.
                 </p>
 
                 {/* Tech badges */}
@@ -176,14 +181,38 @@ export default function MyStory() {
                 </ul>
 
                 <div className="mt-5 rounded-lg border border-teal-600/10 bg-teal-500/5 p-4 text-xs leading-relaxed text-black/75 dark:border-teal-400/10 dark:text-white/80">
-                  <p className="mb-1 font-medium text-teal-700 dark:text-teal-300">
-                    Achievements
+                  <p className="mb-1 flex items-center gap-1 font-medium text-teal-700 dark:text-teal-300">
+                    <Rocket className="h-3.5 w-3.5" /> Achievements
                   </p>
                   <ul className="list-inside space-y-1">
-                    <li>Graduated as Cum Laude and PSITE XII Most Outstanding IT Student Awardee</li>
-                    <li>Hack4Gov3 National Finals – 4th Place (Oct 2024)</li>
-                    <li>Hack4Gov3 Region 12 – Champion & Excellence (Aug 2024)</li>
-                    <li>JITS IT Week Hackathon – Champion (2024 & 2023)</li>
+                    <li>
+                      Graduated as
+                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                        {" "}Cum Laude
+                      </span>
+                      {" "}and
+                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                        {" "}PSITE XII Most Outstanding IT Student
+                      </span>
+                    </li>
+                    <li>
+                      Hack4Gov3 National Finals –
+                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                        {" "}4th Place
+                      </span>{" "}(Oct 2024)
+                    </li>
+                    <li>
+                      Hack4Gov3 Region 12 –
+                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                        {" "}Champion & Excellence Awardee
+                      </span>{" "}(Aug 2024)
+                    </li>
+                    <li>
+                      JITS IT Week Hackathon –
+                      <span className="font-semibold text-teal-700 dark:text-teal-300">
+                        {" "}Champion
+                      </span>{" "}(2024 & 2023)
+                    </li>
                   </ul>
                 </div>
 
