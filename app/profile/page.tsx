@@ -3,7 +3,7 @@ import OtherSkills from "@/components/profile/OtherSkills";
 
 export default function ProfilePage() {
   return (
-    <main className="container mx-auto max-w-5xl px-4 py-12 space-y-16">
+    <main className="container mx-auto max-w-7xl px-4 py-12 space-y-16">
       <Profile />
       <MyStory />
       <section className="space-y-6">

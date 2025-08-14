@@ -41,9 +41,6 @@ export default function HomePage() {
             View more of me
           </Link>
         </div>
-        <h1 className="mb-6 text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
-          My Work
-        </h1>
       </div>
     </main>
   );
