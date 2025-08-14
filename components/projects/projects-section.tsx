@@ -16,6 +16,8 @@ const PROJECTS = gql`
       description
       tags
       github
+      githubLabel
+      details
     }
   }
 `;
@@ -32,7 +34,9 @@ export default function ProjectsSection() {
     alt: string;
     description?: string;
     tags: string[];
-    github?: string;
+    github?: string | null;
+    githubLabel?: string | null;
+    details?: string | null;
   }
 
   return (
@@ -60,11 +64,18 @@ export default function ProjectsSection() {
               ))}
             </div>
 
-            {p.github ? (
-              <Link href={p.github} className="inline-block mt-4 underline">
-                View project →
-              </Link>
-            ) : null}
+            <div className="flex gap-4 mt-4">
+              {p.details ? (
+                <Link href={`/${p.details}`} className="underline">
+                  Project details →
+                </Link>
+              ) : null}
+              {p.github ? (
+                <Link href={p.github} className="underline">
+                  {p.githubLabel ?? "View project"} →
+                </Link>
+              ) : null}
+            </div>
           </Card>
         </motion.div>
       ))}
