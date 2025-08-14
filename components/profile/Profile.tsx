@@ -24,7 +24,7 @@ const PROFILE: ProfileData = {
     linkedin: "https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/",
     github: "https://github.com/Seanneskie",
     leetcode: "https://leetcode.com/u/seanneskie32/",
-    resume: "/static/canete_resume.pdf",
+    resume: "/static/pdfs/canete_resume.pdf",
   },
 };
 

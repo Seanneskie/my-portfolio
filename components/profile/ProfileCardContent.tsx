@@ -99,7 +99,7 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
           {/* LEFT (25%): Full-height image */}
           <div className="relative h-full min-h-[240px] overflow-hidden rounded-xl ring-2 ring-blue-900/30 dark:ring-blue-500/30 shadow-sm">
             <img
-              src={profile.image}
+              src="static/image_1.jpg"
               alt={profile.name}
               className="absolute inset-0 h-full w-full object-cover"
             />
