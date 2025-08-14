@@ -190,7 +190,7 @@ export default function CertificatesSection() {
                           <Button
                             asChild
                             size="sm"
-                            className="mt-4 focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
+                            className="mt-4 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white border-0 focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
                           >
                             <a
                               href={c.link}
