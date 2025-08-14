@@ -25,15 +25,15 @@
       {
         "title": "AI Technology",
         "items": [
-          {"icon": "fas fa-robot", "name": "Google Teachable Machine"},
+          {"icon": "devicon-google-plain colored", "name": "Google Teachable Machine"},
           {"icon": "devicon-tensorflow-original colored", "name": "TensorFlow"},
           {"icon": "devicon-opencv-plain colored", "name": "OpenCV"},
-          {"icon": "fas fa-link", "name": "LangChain"},
-          {"icon": "fas fa-brain", "name": "Deep Learning"},
-          {"icon": "fas fa-smile", "name": "VADER Sentiment Analysis"},
-          {"icon": "fas fa-circle", "name": "Orange"}
-        ]
-      },
+          {"icon": "devicon-python-plain colored", "name": "LangChain"},
+          {"icon": "devicon-pytorch-original colored", "name": "Deep Learning"},
+          {"icon": "devicon-numpy-original colored", "name": "VADER Sentiment Analysis"},
+          {"icon": "devicon-python-plain colored", "name": "Orange"}
+          ]
+        },
       {
         "title": "Frameworks",
         "items": [
@@ -47,11 +47,11 @@
           {"icon": "devicon-angularjs-plain colored", "name": "AngularJS"},
           {"icon": "devicon-alpinejs-original colored", "name": "Alpine.js"},
           {"icon": "devicon-laravel-plain colored", "name": "Laravel"},
-          {"icon": "fas fa-map", "name": "Leaflet"}
-        ]
-      }
-    ]
-  },
+          {"icon": "devicon-mapbox-original colored", "name": "Leaflet"}
+          ]
+        }
+      ]
+    },
   {
     "id": "DataAnalysis",
     "label": "Working with Data",
@@ -62,7 +62,7 @@
           {"icon": "fas fa-chart-line", "name": "Data Analysis Skill"},
           {"icon": "fas fa-chart-pie", "name": "Data Visualization"},
           {"icon": "fas fa-lightbulb", "name": "Data Storytelling"},
-          {"icon": "fas fa-database", "name": "SQL"}
+            {"icon": "devicon-mysql-plain colored", "name": "SQL"}
         ]
       },
       {
@@ -73,8 +73,8 @@
           {"icon": "fas fa-chart-bar", "name": "Jamovi"},
           {"icon": "fas fa-file-excel", "name": "Excel"},
           {"icon": "devicon-postgresql-plain colored", "name": "PGAdmin4"},
-          {"icon": "fas fa-database", "name": "DBeaver"},
-          {"icon": "fas fa-chart-area", "name": "Google Looker Studio"},
+            {"icon": "devicon-dbeaver-plain colored", "name": "DBeaver"},
+            {"icon": "devicon-google-plain colored", "name": "Google Looker Studio"},
           {"icon": "fas fa-briefcase", "name": "Business Intelligence (BI)"}
         ]
       },
@@ -116,7 +116,7 @@
       {
         "title": "Tools used",
         "items": [
-          {"icon": "fas fa-code", "name": "Kali Linux"},
+            {"icon": "devicon-kalilinux-plain colored", "name": "Kali Linux"},
           {"icon": "fas fa-code", "name": "Binwalk"},
           {"icon": "fas fa-code", "name": "Hexedit"},
           {"icon": "fas fa-code", "name": "Autopsy"},
@@ -134,29 +134,29 @@
       {
         "title": "UI/UX",
         "items": [
-          {"icon": "fab fa-figma", "name": "Figma"},
-          {"icon": "fab fa-figma", "name": "Canva"},
-          {"icon": "fas fa-code", "name": "Visio"}
-        ]
-      },
+            {"icon": "devicon-figma-plain colored", "name": "Figma"},
+            {"icon": "devicon-canva-original colored", "name": "Canva"},
+            {"icon": "devicon-visualstudio-plain colored", "name": "Visio"}
+          ]
+        },
       {
         "title": "React Component Libraries",
         "items": [
-          {"icon": "fas fa-cube", "name": "ShadCN"},
-          {"icon": "fas fa-layer-group", "name": "Material UI"},
-          {"icon": "fas fa-icons", "name": "HeroIcons"}
-        ]
-      },
-      {
-        "title": "Wireframing/Diagrams",
-        "items": [
-          {"icon": "fas fa-paint-brush", "name": "UML Diagrams"},
-          {"icon": "fas fa-paint-brush", "name": "Draw.io"},
-          {"icon": "fas fa-paint-brush", "name": "Sketch"}
-        ]
-      }
-    ]
-  },
+            {"icon": "devicon-react-original colored", "name": "ShadCN"},
+            {"icon": "devicon-materialui-plain colored", "name": "Material UI"},
+            {"icon": "devicon-tailwindcss-original colored", "name": "HeroIcons"}
+          ]
+        },
+        {
+          "title": "Wireframing/Diagrams",
+          "items": [
+            {"icon": "devicon-figma-plain colored", "name": "UML Diagrams"},
+            {"icon": "devicon-figma-plain colored", "name": "Draw.io"},
+            {"icon": "devicon-sketch-plain colored", "name": "Sketch"}
+          ]
+        }
+      ]
+    },
   {
     "id": "OtherSkill",
     "label": "Other Skills",
@@ -168,46 +168,46 @@
           {"icon": "devicon-docker-plain colored", "name": "Docker"},
           {"icon": "devicon-vitejs-plain colored", "name": "Vite"},
           {"icon": "devicon-googlecloud-plain colored", "name": "Google Cloud"},
-          {"icon": "fas fa-cloud-upload-alt", "name": "Render"},
-          {"icon": "devicon-vercel-plain colored", "name": "Vercel"}
-        ]
-      },
+            {"icon": "fas fa-cloud-upload-alt", "name": "Render"},
+            {"icon": "devicon-vercel-plain colored", "name": "Vercel"}
+          ]
+        },
       {
         "title": "Command Line & Process",
         "items": [
           {"icon": "devicon-linux-plain colored", "name": "Linux Commands"},
-          {"icon": "fas fa-terminal", "name": "PowerShell Commands"},
-          {"icon": "fab fa-markdown", "name": "Markdown Language"},
-          {"icon": "fas fa-file-alt", "name": "Project Documentation"},
-          {"icon": "fas fa-project-diagram", "name": "Software Development Life Cycle (SDLC)"}
-        ]
-      },
-      {
-        "title": "Development",
-        "items": [
-          {"icon": "fas fa-code", "name": "Front-End Development"},
-          {"icon": "fas fa-server", "name": "Back-End Development"},
-          {"icon": "fas fa-comments", "name": "Chatbot Development"},
-          {"icon": "fas fa-database", "name": "Database Administration"}
-        ]
-      },
-      {
-        "title": "AI & Prompting",
-        "items": [
-          {"icon": "fas fa-lightbulb", "name": "AI Prompting"},
-          {"icon": "fas fa-terminal", "name": "Prompt Engineering"},
-          {"icon": "fas fa-brain", "name": "Generative AI"}
-        ]
-      },
-      {
-        "title": "Specialized",
-        "items": [
-          {"icon": "fas fa-globe", "name": "Geographic Information System (GIS)"},
-          {"icon": "fas fa-microchip", "name": "x86-64 Assembly Language (studying)"}
-        ]
-      }
-    ]
-  },
+            {"icon": "devicon-powershell-plain colored", "name": "PowerShell Commands"},
+            {"icon": "devicon-markdown-original colored", "name": "Markdown Language"},
+            {"icon": "devicon-notion-plain colored", "name": "Project Documentation"},
+            {"icon": "devicon-github-plain colored", "name": "Software Development Life Cycle (SDLC)"}
+          ]
+        },
+        {
+          "title": "Development",
+          "items": [
+            {"icon": "devicon-html5-plain colored", "name": "Front-End Development"},
+            {"icon": "devicon-nodejs-plain colored", "name": "Back-End Development"},
+            {"icon": "devicon-python-plain colored", "name": "Chatbot Development"},
+            {"icon": "devicon-mysql-plain colored", "name": "Database Administration"}
+          ]
+        },
+        {
+          "title": "AI & Prompting",
+          "items": [
+            {"icon": "devicon-python-plain colored", "name": "AI Prompting"},
+            {"icon": "devicon-python-plain colored", "name": "Prompt Engineering"},
+            {"icon": "devicon-pytorch-original colored", "name": "Generative AI"}
+          ]
+        },
+        {
+          "title": "Specialized",
+          "items": [
+            {"icon": "devicon-mapbox-original colored", "name": "Geographic Information System (GIS)"},
+            {"icon": "devicon-cplusplus-plain colored", "name": "x86-64 Assembly Language (studying)"}
+          ]
+        }
+      ]
+    },
   {
     "id": "SoftSkills",
     "label": "Soft Skills",
