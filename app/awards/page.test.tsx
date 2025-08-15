@@ -3,14 +3,6 @@ import { act } from "react-dom/test-utils";
 import { createRoot } from "react-dom/client";
 import AwardsPage from "./page";
 
-// Mock Next.js Image component
-vi.mock("next/image", () => ({
-  default: (props: any) => {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img {...props} />;
-  },
-}));
-
 describe("AwardsPage", () => {
   beforeEach(() => {
     vi.stubGlobal(
@@ -21,10 +13,9 @@ describe("AwardsPage", () => {
           json: () =>
             Promise.resolve([
               {
+                icon: "fas fa-trophy",
                 title: "Hackathon Champion",
-                year: 2024,
-                description:
-                  "Won first place at the 2024 City Hackathon.",
+                description: "Won first place at the 2024 City Hackathon.",
               },
             ]),
         })
