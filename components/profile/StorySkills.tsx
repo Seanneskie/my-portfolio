@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import skillsData from "@/data/skills.json";
+import { useData } from "@/lib/use-data";
 
 interface SkillItem {
   icon: string;
@@ -21,10 +21,10 @@ interface SkillCategory {
 }
 
 export default function StorySkills() {
-  const programming = (skillsData as SkillCategory[]).find(
-    (category) => category.id === "Programming"
-  );
+  const { data, error } = useData<SkillCategory[]>("skills.json");
+  if (error || !data) return null;
 
+  const programming = data.find((category) => category.id === "Programming");
   if (!programming) return null;
 
   return (

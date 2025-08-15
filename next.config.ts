@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   basePath: isProd ? "/my-portfolio" : "",
   assetPrefix: isProd ? "/my-portfolio/" : "",
   trailingSlash: true, // helps direct-load nested routes on GitHub Pages
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? "/my-portfolio" : "",
+  },
 };
 
 export default nextConfig;

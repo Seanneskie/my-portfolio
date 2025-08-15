@@ -1,6 +1,5 @@
 "use client";
 
-import { gql, useQuery } from "@apollo/client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
@@ -20,6 +19,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useData } from "@/lib/use-data";
 
 interface Certificate {
   tags: string[];
@@ -29,41 +29,29 @@ interface Certificate {
   skills: string[];
 }
 
-const CERTIFICATES = gql`
-  query Certificates($search: String, $tag: String) {
-    certificates(search: $search, tag: $tag) {
-      tags
-      title
-      desc
-      link
-      skills
-    }
-  }
-`;
-
 export default function CertificatesSection() {
   const [search, setSearch] = useState("");
   const [tag, setTag] = useState("");
 
-  const { data: allData } = useQuery<{ certificates: Certificate[] }>(
-    CERTIFICATES
-  );
-  const { data, loading, error } = useQuery<{ certificates: Certificate[] }>(
-    CERTIFICATES,
-    {
-      variables: {
-        search: search || undefined,
-        tag: tag || undefined,
-      },
-    }
+  const { data, loading, error } = useData<Certificate[]>("certificates.json");
+  const certificates = useMemo(() => data ?? [], [data]);
+
+  const tags = useMemo<string[]>(
+    () => Array.from(new Set(certificates.flatMap((c) => c.tags))).sort(),
+    [certificates]
   );
 
-  const certificates = useMemo(() => data?.certificates ?? [], [data]);
-
-  const tags = useMemo<string[]>(() => {
-    const all = allData?.certificates ?? [];
-    return Array.from(new Set(all.flatMap((c) => c.tags))).sort();
-  }, [allData]);
+  const filtered = useMemo(() => {
+    return certificates.filter((c) => {
+      const term = search.toLowerCase();
+      const matchesSearch =
+        !term ||
+        c.title.toLowerCase().includes(term) ||
+        c.desc.toLowerCase().includes(term);
+      const matchesTag = !tag || c.tags.includes(tag);
+      return matchesSearch && matchesTag;
+    });
+  }, [certificates, search, tag]);
 
   if (loading) {
     return (
@@ -78,7 +66,7 @@ export default function CertificatesSection() {
     );
   }
 
-  if (error)
+  if (error || !data)
     return (
       <p className="text-red-600 dark:text-red-400">
         Failed to load certificates.
@@ -121,7 +109,7 @@ export default function CertificatesSection() {
           Clear filters
         </Button>
       </div>
-      {certificates.length === 0 ? (
+      {filtered.length === 0 ? (
         <p className="text-gray-700 dark:text-gray-200">
           No certificates match your search.
         </p>
@@ -131,7 +119,7 @@ export default function CertificatesSection() {
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
-            {certificates.map((c: Certificate, i: number) => (
+            {filtered.map((c: Certificate, i: number) => (
               <motion.li
                 key={c.title + i}
                 role="listitem"
