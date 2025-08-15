@@ -44,6 +44,7 @@ jobs:
       - name: Build
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          NODE_ENV: production   # 👈 Force production mode
         run: |
           npm run build || npx next build
           # If not using output:'export', ensure static export exists
@@ -53,6 +54,7 @@ jobs:
           fi
           # GitHub Pages needs this to skip Jekyll processing
           touch out/.nojekyll
+
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
