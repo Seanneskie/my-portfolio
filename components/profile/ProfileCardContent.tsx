@@ -28,6 +28,7 @@ import { toast } from "sonner";
 import { openMailTo, copyEmail } from "@/lib/profile";
 import type { ProfileData, Links } from "./types";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
+import Image from "next/image";
 
 const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
   { key: "linkedin", label: "LinkedIn", icon: Linkedin },
@@ -98,10 +99,12 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
         >
           {/* LEFT (25%): Full-height image */}
           <div className="relative h-full min-h-[240px] overflow-hidden rounded-xl ring-2 ring-blue-900/30 dark:ring-blue-500/30 shadow-sm">
-            <img
-              src="static/image_1.jpg"
+            <Image
+              src="/static/image_1.jpg"
               alt={profile.name}
-              className="absolute inset-0 h-full w-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 25vw"
+              className="object-cover"
             />
           </div>
 

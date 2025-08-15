@@ -90,7 +90,7 @@ export default function CertificatesSection() {
           onChange={(e) => setSearch(e.target.value)}
           className="sm:max-w-xs focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
         />
-        // 1) Control value using a sentinel when tag is empty
+        {/* 1) Control value using a sentinel when tag is empty */}
         <Select
           value={tag ? tag : "__all"}
           onValueChange={(v) => setTag(v === "__all" ? "" : v)}
