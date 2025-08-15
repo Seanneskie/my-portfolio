@@ -28,3 +28,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     </main>
   );
 }
+
+export async function generateStaticParams() {
+  const dir = path.join(process.cwd(), "public", "project-details");
+  const files = await fs.readdir(dir);
+  return files
+    .filter((file) => file.endsWith(".html"))
+    .map((file) => ({ slug: file.replace(/\.html$/, "") }));
+}
