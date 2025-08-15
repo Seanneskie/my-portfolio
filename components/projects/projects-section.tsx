@@ -1,30 +1,26 @@
 "use client";
 
-import { gql, useQuery } from "@apollo/client";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { useData } from "@/lib/use-data";
 
-const PROJECTS = gql`
-  query Projects {
-    projects {
-      title
-      image
-      alt
-      description
-      tags
-      github
-      githubLabel
-      details
-    }
-  }
-`;
+interface Project {
+  title: string;
+  image: string;
+  alt: string;
+  description?: string;
+  tags: string[];
+  github?: string | null;
+  githubLabel?: string | null;
+  details?: string | null;
+}
 
 export default function ProjectsSection() {
-  const { data, loading, error } = useQuery(PROJECTS);
+  const { data, loading, error } = useData<Project[]>("projects.json");
 
   if (loading) {
     return (
@@ -38,22 +34,14 @@ export default function ProjectsSection() {
       </div>
     );
   }
-  if (error) return <p className="text-red-600 dark:text-red-400">Failed to load projects.</p>;
-
-  interface Project {
-    title: string;
-    image: string;
-    alt: string;
-    description?: string;
-    tags: string[];
-    github?: string | null;
-    githubLabel?: string | null;
-    details?: string | null;
-  }
+  if (error || !data)
+    return (
+      <p className="text-red-600 dark:text-red-400">Failed to load projects.</p>
+    );
 
   return (
     <div className="grid gap-6 sm:grid-cols-2">
-      {data.projects.map((p: Project, i: number) => (
+      {data.map((p: Project, i: number) => (
         <motion.div
           key={p.title}
           initial={{ opacity: 0, y: 12 }}

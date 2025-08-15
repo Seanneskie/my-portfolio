@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { gql, useQuery } from "@apollo/client";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useData } from "@/lib/use-data";
 
 interface Project {
   title: string;
@@ -22,30 +22,15 @@ interface Project {
   details?: string | null;
 }
 
-const PROJECTS = gql`
-  query Projects {
-    projects {
-      title
-      image
-      alt
-      description
-      tags
-      github
-      githubLabel
-      details
-    }
-  }
-`;
-
 const ITEMS_PER_PAGE = 6;
 
 export default function ProjectsPage() {
-  const { data, loading, error } = useQuery(PROJECTS);
+  const { data, loading, error } = useData<Project[]>("projects.json");
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [page, setPage] = useState(1);
 
-  const projects: Project[] = useMemo(() => data?.projects ?? [], [data?.projects]);
+  const projects: Project[] = useMemo(() => data ?? [], [data]);
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -101,8 +86,7 @@ export default function ProjectsPage() {
       </main>
     );
   }
-
-  if (error)
+  if (error || !data)
     return (
       <main className="container mx-auto max-w-5xl px-4 py-12">
         <p className="text-red-600 dark:text-red-400">

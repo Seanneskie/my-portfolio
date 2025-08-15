@@ -1,6 +1,5 @@
 "use client";
 
-import { gql, useQuery } from "@apollo/client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
@@ -19,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useData } from "@/lib/use-data";
 
 interface Course {
   code: string;
@@ -28,39 +28,30 @@ interface Course {
   credits?: number;
 }
 
-const COURSES = gql`
-  query Courses($search: String, $institution: String) {
-    courses(search: $search, institution: $institution) {
-      code
-      title
-      institution
-      description
-      credits
-    }
-  }
-`;
-
 export default function CoursesSection() {
   const [search, setSearch] = useState("");
   const [institution, setInstitution] = useState("");
 
-  const { data: allData } = useQuery<{ courses: Course[] }>(COURSES);
-  const { data, loading, error } = useQuery<{ courses: Course[] }>(COURSES, {
-    variables: {
-      search: search || undefined,
-      institution: institution || undefined,
-    },
-  });
-
-  const courses: Course[] = useMemo(() => data?.courses ?? [], [data]);
+  const { data, loading, error } = useData<Course[]>("courses.json");
+  const courses = useMemo(() => data ?? [], [data]);
 
   const institutions = useMemo<string[]>(
-    () =>
-      Array.from(
-        new Set((allData?.courses ?? []).map((c: Course) => c.institution))
-      ).sort(),
-    [allData]
+    () => Array.from(new Set(courses.map((c) => c.institution))).sort(),
+    [courses]
   );
+
+  const filtered = useMemo(() => {
+    return courses.filter((c) => {
+      const term = search.toLowerCase();
+      const matchesSearch =
+        !term ||
+        c.code.toLowerCase().includes(term) ||
+        c.title.toLowerCase().includes(term);
+      const matchesInstitution =
+        !institution || c.institution === institution;
+      return matchesSearch && matchesInstitution;
+    });
+  }, [courses, search, institution]);
 
   if (loading) {
     return (
@@ -75,8 +66,10 @@ export default function CoursesSection() {
     );
   }
 
-  if (error)
-    return <p className="text-red-600 dark:text-red-400">Failed to load courses.</p>;
+  if (error || !data)
+    return (
+      <p className="text-red-600 dark:text-red-400">Failed to load courses.</p>
+    );
 
   return (
     <div className="space-y-4">
@@ -110,7 +103,7 @@ export default function CoursesSection() {
           Clear filters
         </Button>
       </div>
-      {courses.length === 0 ? (
+      {filtered.length === 0 ? (
         <p className="text-gray-700 dark:text-gray-200">
           No courses match your search.
         </p>
@@ -120,7 +113,7 @@ export default function CoursesSection() {
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence>
-            {courses.map((c: Course, i: number) => (
+            {filtered.map((c: Course, i: number) => (
               <motion.li
                 key={c.code}
                 role="listitem"

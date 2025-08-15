@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "devicon/devicon.min.css";
-import ApolloWrapper from "./apollo-provider";
 import { Toaster } from "sonner";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -10,7 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Seanne Cañete — Portfolio",
-  description: "GraphQL-powered Next.js portfolio with shadcn/ui.",
+  description: "Next.js portfolio with shadcn/ui.",
 };
 
 export default function RootLayout({
@@ -29,8 +28,7 @@ export default function RootLayout({
           />
 
           <Header />
-          {/* Apollo provider */}
-          <ApolloWrapper>{children}</ApolloWrapper>
+          {children}
           <Footer />
         </ThemeProvider>
       </body>
