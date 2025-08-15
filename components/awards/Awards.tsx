@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
 import { useData } from "@/lib/use-data";
 
 interface Award {
@@ -32,44 +31,44 @@ export default function Awards() {
       <h1 className="text-3xl font-bold tracking-tight text-teal-700 dark:text-teal-400">
         Awards
       </h1>
-      <ul role="list" className="space-y-4">
+      <ol
+        role="list"
+        className="relative border-l border-gray-200 dark:border-gray-700"
+      >
         {data.map((award) => (
-          <li key={award.title} role="listitem">
-            <Card className="flex flex-col gap-4 p-4 sm:flex-row">
-              {award.image && (
-                <Image
-                  src={award.image}
-                  alt={award.title}
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 rounded object-cover"
-                />
-              )}
-              <div className="space-y-1">
-                <h3 className="text-xl font-semibold text-teal-800 dark:text-teal-200">
-                  {award.title}
-                </h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
-                  {award.year}
-                </p>
-                <p className="text-gray-700 dark:text-gray-200">
-                  {award.description}
-                </p>
-                {award.link && (
-                  <a
-                    href={award.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-teal-600 hover:underline dark:text-teal-400"
-                  >
-                    Learn more
-                  </a>
-                )}
-              </div>
-            </Card>
+          <li key={award.title} className="mb-10 ml-6">
+            <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-teal-600 ring-8 ring-white dark:ring-gray-900" />
+            <time className="mb-1 text-sm leading-none text-gray-400 dark:text-gray-500">
+              {award.year}
+            </time>
+            <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
+              {award.title}
+            </h3>
+            {award.image && (
+              <Image
+                src={award.image}
+                alt={award.title}
+                width={80}
+                height={80}
+                className="my-2 h-20 w-20 rounded object-cover"
+              />
+            )}
+            <p className="mb-4 text-base text-gray-700 dark:text-gray-200">
+              {award.description}
+            </p>
+            {award.link && (
+              <a
+                href={award.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-teal-600 hover:underline dark:text-teal-400"
+              >
+                Learn more
+              </a>
+            )}
           </li>
         ))}
-      </ul>
+      </ol>
     </section>
   );
 }
