@@ -135,7 +135,7 @@ export default function CertificatesSection() {
         >
           <AnimatePresence>
             {filtered.map((c: Certificate, i: number) => {
-              const labels = [...c.tags, ...c.skills];
+              const labels = Array.from(new Set([...c.tags, ...c.skills]));
               const extra = Math.max(0, labels.length - MAX_BADGES);
               const badgeCls =
                 "rounded-full bg-teal-50 text-teal-800 ring-1 ring-inset ring-teal-200 dark:bg-teal-900/30 dark:text-teal-200 dark:ring-teal-800";
