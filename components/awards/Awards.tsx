@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants, type Transition } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { useData } from "@/lib/use-data";
 
@@ -10,21 +10,23 @@ interface Achievement {
   description: string;
 }
 
-const itemVariants = {
+// Framer Motion v11 expects an Easing (function or [x1,y1,x2,y2])
+const EASE_OUT: NonNullable<Transition["ease"]> = [0.16, 1, 0.3, 1];
+
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: EASE_OUT },
+  },
 };
 
 export default function Awards() {
   const { data, loading, error } = useData<Achievement[]>("achievements.json");
 
-  if (loading) {
-    return <p className="text-black dark:text-white">Loading awards...</p>;
-  }
-
-  if (error || !data) {
-    return <p className="text-red-600 dark:text-red-400">Failed to load awards.</p>;
-  }
+  if (loading) return <p className="text-black dark:text-white">Loading awards...</p>;
+  if (error || !data) return <p className="text-red-600 dark:text-red-400">Failed to load awards.</p>;
 
   return (
     <section className="space-y-4">
@@ -66,7 +68,7 @@ export default function Awards() {
               {/* Card body */}
               <Card
                 className="group border border-teal-500/10 bg-white/60 backdrop-blur
-                           transition-all duration-300 hover:translate-y-[-2px]
+                           transition-all duration-300 hover:-translate-y-0.5
                            hover:border-teal-500/30 hover:shadow-lg
                            dark:bg-gray-900/60"
               >
@@ -75,8 +77,6 @@ export default function Awards() {
                     <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200">
                       {achievement.title}
                     </h3>
-
-                    {/* Accent bar animates on hover */}
                     <span
                       className="mt-1 h-1 w-14 shrink-0 rounded-full
                                  bg-gradient-to-r from-teal-500 to-cyan-400
@@ -90,7 +90,6 @@ export default function Awards() {
                     {achievement.description}
                   </p>
 
-                  {/* Subtle bottom divider that grows on hover */}
                   <div
                     className="mt-4 h-px w-0 bg-gradient-to-r from-teal-500/50 to-cyan-400/50
                                transition-all duration-300 group-hover:w-full"
