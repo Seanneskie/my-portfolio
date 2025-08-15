@@ -29,6 +29,7 @@ import { openMailTo, copyEmail } from "@/lib/profile";
 import type { ProfileData, Links } from "./types";
 import { TooltipArrow } from "@radix-ui/react-tooltip";
 import Image from "next/image";
+import { withBasePath } from "@/lib/utils";
 
 const socialList: { key: keyof Links; label: string; icon: LucideIcon }[] = [
   { key: "linkedin", label: "LinkedIn", icon: Linkedin },
@@ -80,7 +81,11 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
               className="gap-2"
               onClick={() => toast.info("Opening resume…")}
             >
-              <a href={links.resume} target="_blank" rel="noreferrer">
+              <a
+                href={links.resume.startsWith("/") ? withBasePath(links.resume) : links.resume}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <FileText size={16} />
                 View Resume
               </a>
@@ -100,7 +105,7 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
           {/* LEFT (25%): Full-height image */}
           <div className="relative h-full min-h-[240px] overflow-hidden rounded-xl ring-2 ring-blue-900/30 dark:ring-blue-500/30 shadow-sm">
             <Image
-              src="/static/image_1.jpg"
+              src={withBasePath("/static/image_1.jpg")}
               alt={profile.name}
               fill
               sizes="(max-width: 768px) 100vw, 25vw"
@@ -208,8 +213,11 @@ export default function ProfileCardContent({ profile }: { profile: ProfileData }
                 className="mt-4 flex w-full flex-wrap items-center justify-center gap-2"
               >
                 {socialList.map(({ key, label, icon: Icon }) => {
-                  const href = links[key];
-                  if (!href) return null;
+                  const rawHref = links[key];
+                  if (!rawHref) return null;
+                  const href = rawHref.startsWith("/")
+                    ? withBasePath(rawHref)
+                    : rawHref;
                   return (
                     <Tooltip key={key}>
                       <TooltipTrigger asChild>

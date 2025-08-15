@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/utils";
 
 export default function AICoinDetector() {
   return (
@@ -21,7 +22,7 @@ function Overview() {
     <section className="flex flex-col md:flex-row items-center gap-6">
       <div className="md:w-1/3">
         <Image
-          src="/static/placeholders/ai.png"
+          src={withBasePath("/static/placeholders/ai.png")}
           alt="AI Coin Detector Screenshot"
           width={400}
           height={300}

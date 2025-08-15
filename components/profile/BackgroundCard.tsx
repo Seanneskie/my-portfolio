@@ -15,6 +15,7 @@ import { openMailTo } from "@/lib/profile";
 import { toast } from "sonner";
 import type { ProfileData } from "./types";
 import Image from "next/image";
+import { withBasePath } from "@/lib/utils";
 
 export default function BackgroundCard({ profile }: { profile: ProfileData }) {
   const autoplay = React.useRef(
@@ -134,7 +135,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
                   onClick={() => toast.info("Opening resume…")}
                 >
                   <a
-                    href={profile.links.resume}
+                    href={profile.links.resume.startsWith("/") ? withBasePath(profile.links.resume) : profile.links.resume}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -150,7 +151,7 @@ export default function BackgroundCard({ profile }: { profile: ProfileData }) {
           <div className="order-last overflow-hidden rounded-xl ring-1 ring-teal-600/20 shadow-sm dark:ring-teal-400/20 md:order-none">
             <div className="relative h-72 w-full overflow-hidden rounded-xl">
               <Image
-                src="/static/image_2.jpg"
+                src={withBasePath("/static/image_2.jpg")}
                 alt="Profile portrait"
                 fill
                 sizes="(max-width: 768px) 100vw, 36vw"
