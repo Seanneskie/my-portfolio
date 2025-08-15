@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { useData } from "@/lib/use-data";
+import { withBasePath } from "@/lib/utils";
 
 interface Project {
   title: string;
@@ -62,7 +63,12 @@ export default function ProjectsSection() {
             {/* Image with soft teal overlay */}
             {p.image ? (
               <div className="relative mb-3 aspect-video overflow-hidden rounded-xl">
-                <Image src={p.image} alt={p.alt} fill className="object-cover" />
+                <Image
+                  src={withBasePath(p.image)}
+                  alt={p.alt}
+                  fill
+                  className="object-cover"
+                />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-teal-900/25 to-transparent dark:from-teal-950/35" />
               </div>
             ) : null}

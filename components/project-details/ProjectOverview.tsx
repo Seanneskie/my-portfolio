@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { withBasePath } from "@/lib/utils";
 
 interface ProjectOverviewProps {
   imageSrc: string;
@@ -21,7 +22,7 @@ export default function ProjectOverview({
     <section className="flex flex-col md:flex-row items-center gap-6">
       <div className="md:w-1/3">
         <Image
-          src={imageSrc}
+          src={withBasePath(imageSrc)}
           alt={alt}
           width={400}
           height={300}
