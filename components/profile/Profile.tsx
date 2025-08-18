@@ -25,7 +25,9 @@ const PROFILE: ProfileData = {
     linkedin: "https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/",
     github: "https://github.com/Seanneskie",
     leetcode: "https://leetcode.com/u/seanneskie32/",
-    resume: withBasePath("/static/pdfs/canete_resume.pdf"),
+    // Store resume as a plain relative path. Components consuming this
+    // value are responsible for prefixing it with the deployment base path.
+    resume: "/static/pdfs/canete_resume.pdf",
   },
 };
 
