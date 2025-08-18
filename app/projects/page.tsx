@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/utils";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -143,7 +144,7 @@ export default function ProjectsPage() {
                 {p.image ? (
                   <div className="relative mb-3 aspect-video overflow-hidden rounded-xl">
                     <Image
-                      src={p.image}
+                      src={withBasePath(p.image)}
                       alt={p.alt}
                       fill
                       className="object-cover"

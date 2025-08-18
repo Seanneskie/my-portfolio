@@ -1,7 +1,7 @@
 // components/common/Banner.tsx
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 import Image from "next/image";
 import * as React from "react";
 
@@ -78,7 +78,7 @@ export default function Banner({
         )}
       >
         <Image
-          src={backgroundImage}
+          src={withBasePath(backgroundImage)}
           alt="" // decorative; context provided via aria-label on section
           fill
           sizes="100vw"

@@ -4,12 +4,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ProfileCard from "./ProfileCard";
 import BackgroundCard from "./BackgroundCard";
 import type { ProfileData } from "./types";
+import { withBasePath } from "@/lib/utils";
 
 const PROFILE: ProfileData = {
   name: "Seanne Cañete",
   email: "seannecanete32@gmail.com",
   address: "General Santos City, Philippines",
-  image: "/static/profile.jpg",
+  image: withBasePath("/static/profile.jpg"),
   background:
     "Hello! I'm Seanne Cañete, an Information Technology graduate at Mindanao State University – General Santos City with a passion for full-stack development, data engineering, and clean UI/UX.",
   education: [
@@ -24,7 +25,7 @@ const PROFILE: ProfileData = {
     linkedin: "https://www.linkedin.com/in/seanne-ca%C3%B1ete-8b09322a1/",
     github: "https://github.com/Seanneskie",
     leetcode: "https://leetcode.com/u/seanneskie32/",
-    resume: "/static/pdfs/canete_resume.pdf",
+    resume: withBasePath("/static/pdfs/canete_resume.pdf"),
   },
 };
 

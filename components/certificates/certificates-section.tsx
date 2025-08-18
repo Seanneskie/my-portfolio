@@ -25,6 +25,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useData } from "@/lib/use-data";
+import { withBasePath } from "@/lib/utils";
 
 interface Certificate {
   tags: string[];
@@ -90,7 +91,7 @@ export default function CertificatesSection() {
           onChange={(e) => setSearch(e.target.value)}
           className="sm:max-w-xs focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
         />
-        // 1) Control value using a sentinel when tag is empty
+        {/* 1) Control value using a sentinel when tag is empty */}
         <Select
           value={tag ? tag : "__all"}
           onValueChange={(v) => setTag(v === "__all" ? "" : v)}
@@ -236,7 +237,7 @@ export default function CertificatesSection() {
                               className="mt-4 border-0 bg-gradient-to-r from-teal-600 via-cyan-500 to-sky-500 text-white focus-visible:border-teal-500 focus-visible:ring-teal-500/50"
                             >
                               <a
-                                href={c.link}
+                                href={c.link.startsWith("/") ? withBasePath(c.link) : c.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={`View ${c.title} certificate`}
