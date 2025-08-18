@@ -1,7 +1,6 @@
 import Profile, { MyStory } from "@/components/profile";
 import Banner from "@/components/banner";
 import Link from "next/link";
-import { withBasePath } from "@/lib/utils";
 
 export default function HomePage() {
   return (
@@ -9,7 +8,7 @@ export default function HomePage() {
       <Banner
         title="Build. Ship. Iterate."
         subtitle="Full-stack apps with Django & Next.js. Data visualization with Python, SQL, and Charting."
-        backgroundImage={withBasePath("/static/bg_2.jpg")}
+        backgroundImage="/static/bg_2.jpg"
         imageAlt="Clean developer workspace with code and charts"
         align="left"
         height="lg"
